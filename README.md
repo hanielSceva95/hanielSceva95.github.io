@@ -1,43 +1,14 @@
 
 
-# Hydejack
+# Haniel Sceva
 
 Full Stack developer.  
 
 
+[![Screenshot](https://hydejack.com/assets/img/blog/hydejack-9.jpg)][Welcom to my website]
 
-
-[![Screenshot](https://hydejack.com/assets/img/blog/hydejack-9.jpg)][welcome]
-
-<p align="center">Hydejack's cover page on a variety of screen sizes.
-
-
-
-**Hydejack** is a boutique Jekyll theme for hackers, nerds, and academics, with a focus on personal sites that are meant to impress. 
-
-It includes a blog that is suitable for both prose and technical documentation, a portfolio to showcase your projects, and a resume template that looks amazing on the web and in print.
-
-> Your complete presence on the web — A [blog], [portfolio], and [resume].
-
-
-
-## A Personal Site That Won't Disappear
-
-**Hydejack** is 100% built on Open Source software, and is Open Source itself, save for parts of the PRO version. The PRO version is a one-time payment that gives you the right to use it forever.
-
-Hydejack is all static sites. _HTML_. All you need is a web server — any web server — to have a professional web presence that lasts a lifetime.
-
-
-## A Free Blogging Theme
-**Hydejack** started out as a free blogging theme for Jekyll — and continues to be so.
-
-<!--posts-->
-
-
-## An Impressive Portfolio
-A portfolio that's guaranteed to be impressive — no matter what you put into it.
-
-<!--projects-->
+<p align="center">Skilled and proactive Full-Stack Developer with solid experience building scalable web applications using modern technologies including JavaScript, Java/J2EE, Python, ReactJS, Angular, NodeJS, Spring Boot, and Django. Strong foundation in front-end and back-end development, with hands-on experience working across diverse tech stacks and databases such as MySQL, PostgreSQL, MongoDB, and Cassandra.
+Proficient in writing clean, efficient, and maintainable code, while following best practices and collaborating in Agile development teams. Comfortable working with cloud services like AWS and Azure, and experienced in using tools like Git, Jenkins, Docker, and RESTful APIs for smooth deployment and integration. Enthusiastic about learning and experimenting with new technologies, with a growing track record of mentoring interns and junior developers. Seeking a challenging FSD role to contribute strong technical skills, problem-solving abilities, and build impactful solutions. 
 
 
 ## A Printable Resume
