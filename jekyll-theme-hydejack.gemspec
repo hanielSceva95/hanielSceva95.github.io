@@ -3,10 +3,10 @@
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-theme-hydejack"
   spec.version       = "9.2.1"
-  spec.authors       = ["Florian Klampfer"]
-  spec.email         = ["mail@qwtel.com"]
+  spec.authors       = ["Haniel Sceva"]
+  spec.email         = ["haniel.sceva@gmail.com"]
 
-  spec.summary       = %q{"A boutique Jekyll theme for hackers, nerds, and academics"}
+  spec.summary       = %q{"Full-Stack Developer"}
   spec.homepage      = "https://hydejack.com/"
   spec.license       = "GPL-3.0"
   spec.metadata = {
