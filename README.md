@@ -2,7 +2,7 @@
 
 # Hydejack
 
-A boutique Jekyll theme for hackers, nerds, and academics.  
+Full Stack developer.  
 
 
 
