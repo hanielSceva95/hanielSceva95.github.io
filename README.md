@@ -4,8 +4,7 @@
 
 Full Stack developer.  
 
-{% include_cached body/sidebar-bg.html image=include.image color=include.color theme_color=include.theme_color %}
-![Screenshot](https://hydejack.com/assets/img/blog/hydejack-9.jpg)
+<p align="left">![Screenshot](/assets/img/main_page.jpg)
 Welcom to my website
 <p align="center">Skilled and proactive Full-Stack Developer with solid experience building scalable web applications using modern technologies including JavaScript, Java/J2EE, Python, ReactJS, Angular, NodeJS, Spring Boot, and Django. Strong foundation in front-end and back-end development, with hands-on experience working across diverse tech stacks and databases such as MySQL, PostgreSQL, MongoDB, and Cassandra.
 Proficient in writing clean, efficient, and maintainable code, while following best practices and collaborating in Agile development teams. Comfortable working with cloud services like AWS and Azure, and experienced in using tools like Git, Jenkins, Docker, and RESTful APIs for smooth deployment and integration. Enthusiastic about learning and experimenting with new technologies, with a growing track record of mentoring interns and junior developers. Seeking a challenging FSD role to contribute strong technical skills, problem-solving abilities, and build impactful solutions. 
