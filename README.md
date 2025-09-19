@@ -4,7 +4,7 @@
 
 Full Stack developer.  
 
-
+{% include_cached body/sidebar-bg.html image=include.image color=include.color theme_color=include.theme_color %}
 ![Screenshot](https://hydejack.com/assets/img/blog/hydejack-9.jpg)
 Welcom to my website
 <p align="center">Skilled and proactive Full-Stack Developer with solid experience building scalable web applications using modern technologies including JavaScript, Java/J2EE, Python, ReactJS, Angular, NodeJS, Spring Boot, and Django. Strong foundation in front-end and back-end development, with hands-on experience working across diverse tech stacks and databases such as MySQL, PostgreSQL, MongoDB, and Cassandra.
