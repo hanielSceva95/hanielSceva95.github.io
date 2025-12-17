@@ -181,7 +181,7 @@ import {
   // Start the drawer in `opened` state when the cover class is present,
   // and the user hasn't started scrolling already.
   console.log('Drawer opened state:', drawerEl.classList.contains('cover'), scrollTop, history.state);
-  const opened = drawerEl.classList.contains('cover') && scrollTop <= 0 && !(history.state && history.state.closedOnce);
+  const opened = (drawerEl.classList.contains('cover') || drawerEl.hasAttribute('opened')) && scrollTop <= 0 && !(history.state && history.state.closedOnce);
 
   if (!opened) {
     if (!history.state) history.replaceState({}, document.title);

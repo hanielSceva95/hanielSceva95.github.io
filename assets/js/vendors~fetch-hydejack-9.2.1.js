@@ -1,14 +1,1084 @@
-/*!
- *  __  __                __                                     __
- * /\ \/\ \              /\ \             __                    /\ \
- * \ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
- *  \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
- *   \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
- *    \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
- *     \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
- *                 /\___/                \ \____/
- *                 \/__/                  \/___/
- *
- * Powered by Hydejack v9.2.1 <https://hydejack.com/>
- */
-(window.webpackJsonp=window.webpackJsonp||[]).push([[11],{187:function(t,e){var r;r=function(){return this}();try{r=r||new Function("return this")()}catch(t){"object"==typeof window&&(r=window)}t.exports=r},204:function(t,e,r){"use strict";(function(t){var e="undefined"!=typeof globalThis&&globalThis||"undefined"!=typeof self&&self||void 0!==t&&t||{},r="URLSearchParams"in e,n="Symbol"in e&&"iterator"in Symbol,o="FileReader"in e&&"Blob"in e&&function(){try{return new Blob,!0}catch(t){return!1}}(),i="FormData"in e,s="ArrayBuffer"in e;if(s)var a=["[object Int8Array]","[object Uint8Array]","[object Uint8ClampedArray]","[object Int16Array]","[object Uint16Array]","[object Int32Array]","[object Uint32Array]","[object Float32Array]","[object Float64Array]"],u=ArrayBuffer.isView||function(t){return t&&a.indexOf(Object.prototype.toString.call(t))>-1};function c(t){if("string"!=typeof t&&(t=String(t)),/[^a-z0-9\-#$%&'*+.^_`|~!]/i.test(t)||""===t)throw new TypeError('Invalid character in header field name: "'+t+'"');return t.toLowerCase()}function f(t){return"string"!=typeof t&&(t=String(t)),t}function l(t){var e={next:function(){var e=t.shift();return{done:void 0===e,value:e}}};return n&&(e[Symbol.iterator]=function(){return e}),e}function h(t){this.map={},t instanceof h?t.forEach((function(t,e){this.append(e,t)}),this):Array.isArray(t)?t.forEach((function(t){if(2!=t.length)throw new TypeError("Headers constructor: expected name/value pair to be length 2, found"+t.length);this.append(t[0],t[1])}),this):t&&Object.getOwnPropertyNames(t).forEach((function(e){this.append(e,t[e])}),this)}function d(t){if(!t._noBody)return t.bodyUsed?Promise.reject(new TypeError("Already read")):void(t.bodyUsed=!0)}function p(t){return new Promise((function(e,r){t.onload=function(){e(t.result)},t.onerror=function(){r(t.error)}}))}function y(t){var e=new FileReader,r=p(e);return e.readAsArrayBuffer(t),r}function b(t){if(t.slice)return t.slice(0);var e=new Uint8Array(t.byteLength);return e.set(new Uint8Array(t)),e.buffer}function v(){return this.bodyUsed=!1,this._initBody=function(t){var e;this.bodyUsed=this.bodyUsed,this._bodyInit=t,t?"string"==typeof t?this._bodyText=t:o&&Blob.prototype.isPrototypeOf(t)?this._bodyBlob=t:i&&FormData.prototype.isPrototypeOf(t)?this._bodyFormData=t:r&&URLSearchParams.prototype.isPrototypeOf(t)?this._bodyText=t.toString():s&&o&&((e=t)&&DataView.prototype.isPrototypeOf(e))?(this._bodyArrayBuffer=b(t.buffer),this._bodyInit=new Blob([this._bodyArrayBuffer])):s&&(ArrayBuffer.prototype.isPrototypeOf(t)||u(t))?this._bodyArrayBuffer=b(t):this._bodyText=t=Object.prototype.toString.call(t):(this._noBody=!0,this._bodyText=""),this.headers.get("content-type")||("string"==typeof t?this.headers.set("content-type","text/plain;charset=UTF-8"):this._bodyBlob&&this._bodyBlob.type?this.headers.set("content-type",this._bodyBlob.type):r&&URLSearchParams.prototype.isPrototypeOf(t)&&this.headers.set("content-type","application/x-www-form-urlencoded;charset=UTF-8"))},o&&(this.blob=function(){var t=d(this);if(t)return t;if(this._bodyBlob)return Promise.resolve(this._bodyBlob);if(this._bodyArrayBuffer)return Promise.resolve(new Blob([this._bodyArrayBuffer]));if(this._bodyFormData)throw new Error("could not read FormData body as blob");return Promise.resolve(new Blob([this._bodyText]))}),this.arrayBuffer=function(){if(this._bodyArrayBuffer){var t=d(this);return t||(ArrayBuffer.isView(this._bodyArrayBuffer)?Promise.resolve(this._bodyArrayBuffer.buffer.slice(this._bodyArrayBuffer.byteOffset,this._bodyArrayBuffer.byteOffset+this._bodyArrayBuffer.byteLength)):Promise.resolve(this._bodyArrayBuffer))}if(o)return this.blob().then(y);throw new Error("could not read as ArrayBuffer")},this.text=function(){var t,e,r,n,o,i=d(this);if(i)return i;if(this._bodyBlob)return t=this._bodyBlob,e=new FileReader,r=p(e),n=/charset=([A-Za-z0-9_-]+)/.exec(t.type),o=n?n[1]:"utf-8",e.readAsText(t,o),r;if(this._bodyArrayBuffer)return Promise.resolve(function(t){for(var e=new Uint8Array(t),r=new Array(e.length),n=0;n<e.length;n++)r[n]=String.fromCharCode(e[n]);return r.join("")}(this._bodyArrayBuffer));if(this._bodyFormData)throw new Error("could not read FormData body as text");return Promise.resolve(this._bodyText)},i&&(this.formData=function(){return this.text().then(g)}),this.json=function(){return this.text().then(JSON.parse)},this}h.prototype.append=function(t,e){t=c(t),e=f(e);var r=this.map[t];this.map[t]=r?r+", "+e:e},h.prototype.delete=function(t){delete this.map[c(t)]},h.prototype.get=function(t){return t=c(t),this.has(t)?this.map[t]:null},h.prototype.has=function(t){return this.map.hasOwnProperty(c(t))},h.prototype.set=function(t,e){this.map[c(t)]=f(e)},h.prototype.forEach=function(t,e){for(var r in this.map)this.map.hasOwnProperty(r)&&t.call(e,this.map[r],r,this)},h.prototype.keys=function(){var t=[];return this.forEach((function(e,r){t.push(r)})),l(t)},h.prototype.values=function(){var t=[];return this.forEach((function(e){t.push(e)})),l(t)},h.prototype.entries=function(){var t=[];return this.forEach((function(e,r){t.push([r,e])})),l(t)},n&&(h.prototype[Symbol.iterator]=h.prototype.entries);var w=["CONNECT","DELETE","GET","HEAD","OPTIONS","PATCH","POST","PUT","TRACE"];function m(t,r){if(!(this instanceof m))throw new TypeError('Please use the "new" operator, this DOM object constructor cannot be called as a function.');var n,o,i=(r=r||{}).body;if(t instanceof m){if(t.bodyUsed)throw new TypeError("Already read");this.url=t.url,this.credentials=t.credentials,r.headers||(this.headers=new h(t.headers)),this.method=t.method,this.mode=t.mode,this.signal=t.signal,i||null==t._bodyInit||(i=t._bodyInit,t.bodyUsed=!0)}else this.url=String(t);if(this.credentials=r.credentials||this.credentials||"same-origin",!r.headers&&this.headers||(this.headers=new h(r.headers)),this.method=(n=r.method||this.method||"GET",o=n.toUpperCase(),w.indexOf(o)>-1?o:n),this.mode=r.mode||this.mode||null,this.signal=r.signal||this.signal||function(){if("AbortController"in e)return(new AbortController).signal}(),this.referrer=null,("GET"===this.method||"HEAD"===this.method)&&i)throw new TypeError("Body not allowed for GET or HEAD requests");if(this._initBody(i),!("GET"!==this.method&&"HEAD"!==this.method||"no-store"!==r.cache&&"no-cache"!==r.cache)){var s=/([?&])_=[^&]*/;if(s.test(this.url))this.url=this.url.replace(s,"$1_="+(new Date).getTime());else{this.url+=(/\?/.test(this.url)?"&":"?")+"_="+(new Date).getTime()}}}function g(t){var e=new FormData;return t.trim().split("&").forEach((function(t){if(t){var r=t.split("="),n=r.shift().replace(/\+/g," "),o=r.join("=").replace(/\+/g," ");e.append(decodeURIComponent(n),decodeURIComponent(o))}})),e}function O(t,e){if(!(this instanceof O))throw new TypeError('Please use the "new" operator, this DOM object constructor cannot be called as a function.');if(e||(e={}),this.type="default",this.status=void 0===e.status?200:e.status,this.status<200||this.status>599)throw new RangeError("Failed to construct 'Response': The status provided (0) is outside the range [200, 599].");this.ok=this.status>=200&&this.status<300,this.statusText=void 0===e.statusText?"":""+e.statusText,this.headers=new h(e.headers),this.url=e.url||"",this._initBody(t)}m.prototype.clone=function(){return new m(this,{body:this._bodyInit})},v.call(m.prototype),v.call(O.prototype),O.prototype.clone=function(){return new O(this._bodyInit,{status:this.status,statusText:this.statusText,headers:new h(this.headers),url:this.url})},O.error=function(){var t=new O(null,{status:200,statusText:""});return t.ok=!1,t.status=0,t.type="error",t};var E=[301,302,303,307,308];O.redirect=function(t,e){if(-1===E.indexOf(e))throw new RangeError("Invalid status code");return new O(null,{status:e,headers:{location:t}})};var _=e.DOMException;try{new _}catch(t){(_=function(t,e){this.message=t,this.name=e;var r=Error(t);this.stack=r.stack}).prototype=Object.create(Error.prototype),_.prototype.constructor=_}function A(t,r){return new Promise((function(n,i){var a=new m(t,r);if(a.signal&&a.signal.aborted)return i(new _("Aborted","AbortError"));var u=new XMLHttpRequest;function l(){u.abort()}if(u.onload=function(){var t,e,r={statusText:u.statusText,headers:(t=u.getAllResponseHeaders()||"",e=new h,t.replace(/\r?\n[\t ]+/g," ").split("\r").map((function(t){return 0===t.indexOf("\n")?t.substr(1,t.length):t})).forEach((function(t){var r=t.split(":"),n=r.shift().trim();if(n){var o=r.join(":").trim();try{e.append(n,o)}catch(t){console.warn("Response "+t.message)}}})),e)};0===a.url.indexOf("file://")&&(u.status<200||u.status>599)?r.status=200:r.status=u.status,r.url="responseURL"in u?u.responseURL:r.headers.get("X-Request-URL");var o="response"in u?u.response:u.responseText;setTimeout((function(){n(new O(o,r))}),0)},u.onerror=function(){setTimeout((function(){i(new TypeError("Network request failed"))}),0)},u.ontimeout=function(){setTimeout((function(){i(new TypeError("Network request timed out"))}),0)},u.onabort=function(){setTimeout((function(){i(new _("Aborted","AbortError"))}),0)},u.open(a.method,function(t){try{return""===t&&e.location.href?e.location.href:t}catch(e){return t}}(a.url),!0),"include"===a.credentials?u.withCredentials=!0:"omit"===a.credentials&&(u.withCredentials=!1),"responseType"in u&&(o?u.responseType="blob":s&&(u.responseType="arraybuffer")),r&&"object"==typeof r.headers&&!(r.headers instanceof h||e.Headers&&r.headers instanceof e.Headers)){var d=[];Object.getOwnPropertyNames(r.headers).forEach((function(t){d.push(c(t)),u.setRequestHeader(t,f(r.headers[t]))})),a.headers.forEach((function(t,e){-1===d.indexOf(e)&&u.setRequestHeader(e,t)}))}else a.headers.forEach((function(t,e){u.setRequestHeader(e,t)}));a.signal&&(a.signal.addEventListener("abort",l),u.onreadystatechange=function(){4===u.readyState&&a.signal.removeEventListener("abort",l)}),u.send(void 0===a._bodyInit?null:a._bodyInit)}))}A.polyfill=!0,e.fetch||(e.fetch=A,e.Headers=h,e.Request=m,e.Response=O)}).call(this,r(187))},205:function(t,e,r){(function(n){var o,i;void 0===(i="function"==typeof(o=function(){"use strict";function t(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")}function e(t,e){for(var r=0;r<e.length;r++){var n=e[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(t,n.key,n)}}function r(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),Object.defineProperty(t,"prototype",{writable:!1}),t}function o(t){return(o=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(t){return t.__proto__||Object.getPrototypeOf(t)})(t)}function i(t,e){return(i=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,e){return t.__proto__=e,t})(t,e)}function s(t){if(void 0===t)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return t}function a(t,e){if(e&&("object"==typeof e||"function"==typeof e))return e;if(void 0!==e)throw new TypeError("Derived constructors may only return object or undefined");return s(t)}function u(t){var e=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(t){return!1}}();return function(){var r,n=o(t);if(e){var i=o(this).constructor;r=Reflect.construct(n,arguments,i)}else r=n.apply(this,arguments);return a(this,r)}}function c(t,e){for(;!Object.prototype.hasOwnProperty.call(t,e)&&null!==(t=o(t)););return t}function f(){return(f="undefined"!=typeof Reflect&&Reflect.get?Reflect.get.bind():function(t,e,r){var n=c(t,e);if(n){var o=Object.getOwnPropertyDescriptor(n,e);return o.get?o.get.call(arguments.length<3?t:r):o.value}}).apply(this,arguments)}var l=function(){function e(){t(this,e),Object.defineProperty(this,"listeners",{value:{},writable:!0,configurable:!0})}return r(e,[{key:"addEventListener",value:function(t,e,r){t in this.listeners||(this.listeners[t]=[]),this.listeners[t].push({callback:e,options:r})}},{key:"removeEventListener",value:function(t,e){if(t in this.listeners)for(var r=this.listeners[t],n=0,o=r.length;n<o;n++)if(r[n].callback===e)return void r.splice(n,1)}},{key:"dispatchEvent",value:function(t){var e=this;if(t.type in this.listeners){for(var r,n=this.listeners[t.type].slice(),o=function(){r=n[i];try{r.callback.call(e,t)}catch(t){Promise.resolve().then((function(){throw t}))}r.options&&r.options.once&&e.removeEventListener(t.type,r.callback)},i=0,s=n.length;i<s;i++)o();return!t.defaultPrevented}}}]),e}(),h=function(e){!function(t,e){if("function"!=typeof e&&null!==e)throw new TypeError("Super expression must either be null or a function");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),Object.defineProperty(t,"prototype",{writable:!1}),e&&i(t,e)}(a,e);var n=u(a);function a(){var e;return t(this,a),(e=n.call(this)).listeners||l.call(s(e)),Object.defineProperty(s(e),"aborted",{value:!1,writable:!0,configurable:!0}),Object.defineProperty(s(e),"onabort",{value:null,writable:!0,configurable:!0}),Object.defineProperty(s(e),"reason",{value:void 0,writable:!0,configurable:!0}),e}return r(a,[{key:"toString",value:function(){return"[object AbortSignal]"}},{key:"dispatchEvent",value:function(t){"abort"===t.type&&(this.aborted=!0,"function"==typeof this.onabort&&this.onabort.call(this,t)),f(o(a.prototype),"dispatchEvent",this).call(this,t)}}]),a}(l),d=function(){function e(){t(this,e),Object.defineProperty(this,"signal",{value:new h,writable:!0,configurable:!0})}return r(e,[{key:"abort",value:function(t){var e;try{e=new Event("abort")}catch(t){"undefined"!=typeof document?document.createEvent?(e=document.createEvent("Event")).initEvent("abort",!1,!1):(e=document.createEventObject()).type="abort":e={type:"abort",bubbles:!1,cancelable:!1}}var r=t;if(void 0===r)if("undefined"==typeof document)(r=new Error("This operation was aborted")).name="AbortError";else try{r=new DOMException("signal is aborted without reason")}catch(t){(r=new Error("This operation was aborted")).name="AbortError"}this.signal.reason=r,this.signal.dispatchEvent(e)}},{key:"toString",value:function(){return"[object AbortController]"}}]),e}();function p(t){return t.__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL?(console.log("__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL=true is set, will force install polyfill"),!0):"function"==typeof t.Request&&!t.Request.prototype.hasOwnProperty("signal")||!t.AbortController}"undefined"!=typeof Symbol&&Symbol.toStringTag&&(d.prototype[Symbol.toStringTag]="AbortController",h.prototype[Symbol.toStringTag]="AbortSignal"),function(t){if(p(t))if(t.fetch){var e=function(t){"function"==typeof t&&(t={fetch:t});var e=t,r=e.fetch,n=e.Request,o=void 0===n?r.Request:n,i=e.AbortController,s=e.__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL,a=void 0!==s&&s;if(!p({fetch:r,Request:o,AbortController:i,__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL:a}))return{fetch:r,Request:u};var u=o;(u&&!u.prototype.hasOwnProperty("signal")||a)&&((u=function(t,e){var r;e&&e.signal&&(r=e.signal,delete e.signal);var n=new o(t,e);return r&&Object.defineProperty(n,"signal",{writable:!1,enumerable:!1,configurable:!0,value:r}),n}).prototype=o.prototype);var c=r;return{fetch:function(t,e){var r=u&&u.prototype.isPrototypeOf(t)?t.signal:e?e.signal:void 0;if(r){var n;try{n=new DOMException("Aborted","AbortError")}catch(t){(n=new Error("Aborted")).name="AbortError"}if(r.aborted)return Promise.reject(n);var o=new Promise((function(t,e){r.addEventListener("abort",(function(){return e(n)}),{once:!0})}));return e&&e.signal&&delete e.signal,Promise.race([o,c(t,e)])}return c(t,e)},Request:u}}(t),r=e.fetch,n=e.Request;t.fetch=r,t.Request=n,Object.defineProperty(t,"AbortController",{writable:!0,enumerable:!1,configurable:!0,value:d}),Object.defineProperty(t,"AbortSignal",{writable:!0,enumerable:!1,configurable:!0,value:h})}else console.warn("fetch() is not available, cannot install abortcontroller-polyfill")}("undefined"!=typeof self?self:n)})?o.call(e,r,e,t):o)||(t.exports=i)}).call(this,r(187))}}]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~fetch"],{
+
+/***/ "./node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/abortcontroller-polyfill/dist/polyfill-patch-fetch.js ***!
+  \****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (factory) {
+   true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
+})(function () {
+  'use strict';
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    Object.defineProperty(Constructor, "prototype", {
+      writable: false
+    });
+    return Constructor;
+  }
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        writable: true,
+        configurable: true
+      }
+    });
+    Object.defineProperty(subClass, "prototype", {
+      writable: false
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+  }
+  function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+      return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+  }
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+    return _setPrototypeOf(o, p);
+  }
+  function _isNativeReflectConstruct() {
+    if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+    if (Reflect.construct.sham) return false;
+    if (typeof Proxy === "function") return true;
+    try {
+      Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+  function _assertThisInitialized(self) {
+    if (self === void 0) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+    return self;
+  }
+  function _possibleConstructorReturn(self, call) {
+    if (call && (typeof call === "object" || typeof call === "function")) {
+      return call;
+    } else if (call !== void 0) {
+      throw new TypeError("Derived constructors may only return object or undefined");
+    }
+    return _assertThisInitialized(self);
+  }
+  function _createSuper(Derived) {
+    var hasNativeReflectConstruct = _isNativeReflectConstruct();
+    return function _createSuperInternal() {
+      var Super = _getPrototypeOf(Derived),
+        result;
+      if (hasNativeReflectConstruct) {
+        var NewTarget = _getPrototypeOf(this).constructor;
+        result = Reflect.construct(Super, arguments, NewTarget);
+      } else {
+        result = Super.apply(this, arguments);
+      }
+      return _possibleConstructorReturn(this, result);
+    };
+  }
+  function _superPropBase(object, property) {
+    while (!Object.prototype.hasOwnProperty.call(object, property)) {
+      object = _getPrototypeOf(object);
+      if (object === null) break;
+    }
+    return object;
+  }
+  function _get() {
+    if (typeof Reflect !== "undefined" && Reflect.get) {
+      _get = Reflect.get.bind();
+    } else {
+      _get = function _get(target, property, receiver) {
+        var base = _superPropBase(target, property);
+        if (!base) return;
+        var desc = Object.getOwnPropertyDescriptor(base, property);
+        if (desc.get) {
+          return desc.get.call(arguments.length < 3 ? target : receiver);
+        }
+        return desc.value;
+      };
+    }
+    return _get.apply(this, arguments);
+  }
+  var Emitter = /*#__PURE__*/function () {
+    function Emitter() {
+      _classCallCheck(this, Emitter);
+      Object.defineProperty(this, 'listeners', {
+        value: {},
+        writable: true,
+        configurable: true
+      });
+    }
+    _createClass(Emitter, [{
+      key: "addEventListener",
+      value: function addEventListener(type, callback, options) {
+        if (!(type in this.listeners)) {
+          this.listeners[type] = [];
+        }
+        this.listeners[type].push({
+          callback: callback,
+          options: options
+        });
+      }
+    }, {
+      key: "removeEventListener",
+      value: function removeEventListener(type, callback) {
+        if (!(type in this.listeners)) {
+          return;
+        }
+        var stack = this.listeners[type];
+        for (var i = 0, l = stack.length; i < l; i++) {
+          if (stack[i].callback === callback) {
+            stack.splice(i, 1);
+            return;
+          }
+        }
+      }
+    }, {
+      key: "dispatchEvent",
+      value: function dispatchEvent(event) {
+        var _this2 = this;
+        if (!(event.type in this.listeners)) {
+          return;
+        }
+        var stack = this.listeners[event.type];
+        var stackToCall = stack.slice();
+        var _loop = function _loop() {
+            listener = stackToCall[i];
+            try {
+              listener.callback.call(_this2, event);
+            } catch (e) {
+              Promise.resolve().then(function () {
+                throw e;
+              });
+            }
+            if (listener.options && listener.options.once) {
+              _this2.removeEventListener(event.type, listener.callback);
+            }
+          },
+          listener;
+        for (var i = 0, l = stackToCall.length; i < l; i++) {
+          _loop();
+        }
+        return !event.defaultPrevented;
+      }
+    }]);
+    return Emitter;
+  }();
+  var AbortSignal = /*#__PURE__*/function (_Emitter) {
+    _inherits(AbortSignal, _Emitter);
+    var _super = _createSuper(AbortSignal);
+    function AbortSignal() {
+      var _this;
+      _classCallCheck(this, AbortSignal);
+      _this = _super.call(this); // Some versions of babel does not transpile super() correctly for IE <= 10, if the parent
+      // constructor has failed to run, then "this.listeners" will still be undefined and then we call
+      // the parent constructor directly instead as a workaround. For general details, see babel bug:
+      // https://github.com/babel/babel/issues/3041
+      // This hack was added as a fix for the issue described here:
+      // https://github.com/Financial-Times/polyfill-library/pull/59#issuecomment-477558042
+
+      if (!_this.listeners) {
+        Emitter.call(_assertThisInitialized(_this));
+      } // Compared to assignment, Object.defineProperty makes properties non-enumerable by default and
+      // we want Object.keys(new AbortController().signal) to be [] for compat with the native impl
+
+      Object.defineProperty(_assertThisInitialized(_this), 'aborted', {
+        value: false,
+        writable: true,
+        configurable: true
+      });
+      Object.defineProperty(_assertThisInitialized(_this), 'onabort', {
+        value: null,
+        writable: true,
+        configurable: true
+      });
+      Object.defineProperty(_assertThisInitialized(_this), 'reason', {
+        value: undefined,
+        writable: true,
+        configurable: true
+      });
+      return _this;
+    }
+    _createClass(AbortSignal, [{
+      key: "toString",
+      value: function toString() {
+        return '[object AbortSignal]';
+      }
+    }, {
+      key: "dispatchEvent",
+      value: function dispatchEvent(event) {
+        if (event.type === 'abort') {
+          this.aborted = true;
+          if (typeof this.onabort === 'function') {
+            this.onabort.call(this, event);
+          }
+        }
+        _get(_getPrototypeOf(AbortSignal.prototype), "dispatchEvent", this).call(this, event);
+      }
+    }]);
+    return AbortSignal;
+  }(Emitter);
+  var AbortController = /*#__PURE__*/function () {
+    function AbortController() {
+      _classCallCheck(this, AbortController);
+
+      // Compared to assignment, Object.defineProperty makes properties non-enumerable by default and
+      // we want Object.keys(new AbortController()) to be [] for compat with the native impl
+      Object.defineProperty(this, 'signal', {
+        value: new AbortSignal(),
+        writable: true,
+        configurable: true
+      });
+    }
+    _createClass(AbortController, [{
+      key: "abort",
+      value: function abort(reason) {
+        var event;
+        try {
+          event = new Event('abort');
+        } catch (e) {
+          if (typeof document !== 'undefined') {
+            if (!document.createEvent) {
+              // For Internet Explorer 8:
+              event = document.createEventObject();
+              event.type = 'abort';
+            } else {
+              // For Internet Explorer 11:
+              event = document.createEvent('Event');
+              event.initEvent('abort', false, false);
+            }
+          } else {
+            // Fallback where document isn't available:
+            event = {
+              type: 'abort',
+              bubbles: false,
+              cancelable: false
+            };
+          }
+        }
+        var signalReason = reason;
+        if (signalReason === undefined) {
+          if (typeof document === 'undefined') {
+            signalReason = new Error('This operation was aborted');
+            signalReason.name = 'AbortError';
+          } else {
+            try {
+              signalReason = new DOMException('signal is aborted without reason');
+            } catch (err) {
+              // IE 11 does not support calling the DOMException constructor, use a
+              // regular error object on it instead.
+              signalReason = new Error('This operation was aborted');
+              signalReason.name = 'AbortError';
+            }
+          }
+        }
+        this.signal.reason = signalReason;
+        this.signal.dispatchEvent(event);
+      }
+    }, {
+      key: "toString",
+      value: function toString() {
+        return '[object AbortController]';
+      }
+    }]);
+    return AbortController;
+  }();
+  if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+    // These are necessary to make sure that we get correct output for:
+    // Object.prototype.toString.call(new AbortController())
+    AbortController.prototype[Symbol.toStringTag] = 'AbortController';
+    AbortSignal.prototype[Symbol.toStringTag] = 'AbortSignal';
+  }
+  function polyfillNeeded(self) {
+    if (self.__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL) {
+      console.log('__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL=true is set, will force install polyfill');
+      return true;
+    } // Note that the "unfetch" minimal fetch polyfill defines fetch() without
+    // defining window.Request, and this polyfill need to work on top of unfetch
+    // so the below feature detection needs the !self.AbortController part.
+    // The Request.prototype check is also needed because Safari versions 11.1.2
+    // up to and including 12.1.x has a window.AbortController present but still
+    // does NOT correctly implement abortable fetch:
+    // https://bugs.webkit.org/show_bug.cgi?id=174980#c2
+
+    return typeof self.Request === 'function' && !self.Request.prototype.hasOwnProperty('signal') || !self.AbortController;
+  }
+
+  /**
+   * Note: the "fetch.Request" default value is available for fetch imported from
+   * the "node-fetch" package and not in browsers. This is OK since browsers
+   * will be importing umd-polyfill.js from that path "self" is passed the
+   * decorator so the default value will not be used (because browsers that define
+   * fetch also has Request). One quirky setup where self.fetch exists but
+   * self.Request does not is when the "unfetch" minimal fetch polyfill is used
+   * on top of IE11; for this case the browser will try to use the fetch.Request
+   * default value which in turn will be undefined but then then "if (Request)"
+   * will ensure that you get a patched fetch but still no Request (as expected).
+   * @param {fetch, Request = fetch.Request}
+   * @returns {fetch: abortableFetch, Request: AbortableRequest}
+   */
+
+  function abortableFetchDecorator(patchTargets) {
+    if ('function' === typeof patchTargets) {
+      patchTargets = {
+        fetch: patchTargets
+      };
+    }
+    var _patchTargets = patchTargets,
+      fetch = _patchTargets.fetch,
+      _patchTargets$Request = _patchTargets.Request,
+      NativeRequest = _patchTargets$Request === void 0 ? fetch.Request : _patchTargets$Request,
+      NativeAbortController = _patchTargets.AbortController,
+      _patchTargets$__FORCE = _patchTargets.__FORCE_INSTALL_ABORTCONTROLLER_POLYFILL,
+      __FORCE_INSTALL_ABORTCONTROLLER_POLYFILL = _patchTargets$__FORCE === void 0 ? false : _patchTargets$__FORCE;
+    if (!polyfillNeeded({
+      fetch: fetch,
+      Request: NativeRequest,
+      AbortController: NativeAbortController,
+      __FORCE_INSTALL_ABORTCONTROLLER_POLYFILL: __FORCE_INSTALL_ABORTCONTROLLER_POLYFILL
+    })) {
+      return {
+        fetch: fetch,
+        Request: Request
+      };
+    }
+    var Request = NativeRequest; // Note that the "unfetch" minimal fetch polyfill defines fetch() without
+    // defining window.Request, and this polyfill need to work on top of unfetch
+    // hence we only patch it if it's available. Also we don't patch it if signal
+    // is already available on the Request prototype because in this case support
+    // is present and the patching below can cause a crash since it assigns to
+    // request.signal which is technically a read-only property. This latter error
+    // happens when you run the main5.js node-fetch example in the repo
+    // "abortcontroller-polyfill-examples". The exact error is:
+    //   request.signal = init.signal;
+    //   ^
+    // TypeError: Cannot set property signal of #<Request> which has only a getter
+
+    if (Request && !Request.prototype.hasOwnProperty('signal') || __FORCE_INSTALL_ABORTCONTROLLER_POLYFILL) {
+      Request = function Request(input, init) {
+        var signal;
+        if (init && init.signal) {
+          signal = init.signal; // Never pass init.signal to the native Request implementation when the polyfill has
+          // been installed because if we're running on top of a browser with a
+          // working native AbortController (i.e. the polyfill was installed due to
+          // __FORCE_INSTALL_ABORTCONTROLLER_POLYFILL being set), then passing our
+          // fake AbortSignal to the native fetch will trigger:
+          // TypeError: Failed to construct 'Request': member signal is not of type AbortSignal.
+
+          delete init.signal;
+        }
+        var request = new NativeRequest(input, init);
+        if (signal) {
+          Object.defineProperty(request, 'signal', {
+            writable: false,
+            enumerable: false,
+            configurable: true,
+            value: signal
+          });
+        }
+        return request;
+      };
+      Request.prototype = NativeRequest.prototype;
+    }
+    var realFetch = fetch;
+    var abortableFetch = function abortableFetch(input, init) {
+      var signal = Request && Request.prototype.isPrototypeOf(input) ? input.signal : init ? init.signal : undefined;
+      if (signal) {
+        var abortError;
+        try {
+          abortError = new DOMException('Aborted', 'AbortError');
+        } catch (err) {
+          // IE 11 does not support calling the DOMException constructor, use a
+          // regular error object on it instead.
+          abortError = new Error('Aborted');
+          abortError.name = 'AbortError';
+        } // Return early if already aborted, thus avoiding making an HTTP request
+
+        if (signal.aborted) {
+          return Promise.reject(abortError);
+        } // Turn an event into a promise, reject it once `abort` is dispatched
+
+        var cancellation = new Promise(function (_, reject) {
+          signal.addEventListener('abort', function () {
+            return reject(abortError);
+          }, {
+            once: true
+          });
+        });
+        if (init && init.signal) {
+          // Never pass .signal to the native implementation when the polyfill has
+          // been installed because if we're running on top of a browser with a
+          // working native AbortController (i.e. the polyfill was installed due to
+          // __FORCE_INSTALL_ABORTCONTROLLER_POLYFILL being set), then passing our
+          // fake AbortSignal to the native fetch will trigger:
+          // TypeError: Failed to execute 'fetch' on 'Window': member signal is not of type AbortSignal.
+          delete init.signal;
+        } // Return the fastest promise (don't need to wait for request to finish)
+
+        return Promise.race([cancellation, realFetch(input, init)]);
+      }
+      return realFetch(input, init);
+    };
+    return {
+      fetch: abortableFetch,
+      Request: Request
+    };
+  }
+  (function (self) {
+    if (!polyfillNeeded(self)) {
+      return;
+    }
+    if (!self.fetch) {
+      console.warn('fetch() is not available, cannot install abortcontroller-polyfill');
+      return;
+    }
+    var _abortableFetch = abortableFetchDecorator(self),
+      fetch = _abortableFetch.fetch,
+      Request = _abortableFetch.Request;
+    self.fetch = fetch;
+    self.Request = Request;
+    Object.defineProperty(self, 'AbortController', {
+      writable: true,
+      enumerable: false,
+      configurable: true,
+      value: AbortController
+    });
+    Object.defineProperty(self, 'AbortSignal', {
+      writable: true,
+      enumerable: false,
+      configurable: true,
+      value: AbortSignal
+    });
+  })(typeof self !== 'undefined' ? self : global);
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ }),
+
+/***/ "./node_modules/webpack/buildin/global.js":
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = function () {
+  return this;
+}();
+try {
+  // This works if eval is allowed (see CSP)
+  g = g || new Function("return this")();
+} catch (e) {
+  // This works if the window reference is available
+  if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+/***/ }),
+
+/***/ "./node_modules/whatwg-fetch/fetch.js":
+/*!********************************************!*\
+  !*** ./node_modules/whatwg-fetch/fetch.js ***!
+  \********************************************/
+/*! exports provided: Headers, Request, Response, DOMException, fetch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Headers", function() { return Headers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Request", function() { return Request; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Response", function() { return Response; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMException", function() { return DOMException; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetch", function() { return fetch; });
+/* eslint-disable no-prototype-builtins */
+var g = typeof globalThis !== 'undefined' && globalThis || typeof self !== 'undefined' && self ||
+// eslint-disable-next-line no-undef
+typeof global !== 'undefined' && global || {};
+var support = {
+  searchParams: 'URLSearchParams' in g,
+  iterable: 'Symbol' in g && 'iterator' in Symbol,
+  blob: 'FileReader' in g && 'Blob' in g && function () {
+    try {
+      new Blob();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }(),
+  formData: 'FormData' in g,
+  arrayBuffer: 'ArrayBuffer' in g
+};
+function isDataView(obj) {
+  return obj && DataView.prototype.isPrototypeOf(obj);
+}
+if (support.arrayBuffer) {
+  var viewClasses = ['[object Int8Array]', '[object Uint8Array]', '[object Uint8ClampedArray]', '[object Int16Array]', '[object Uint16Array]', '[object Int32Array]', '[object Uint32Array]', '[object Float32Array]', '[object Float64Array]'];
+  var isArrayBufferView = ArrayBuffer.isView || function (obj) {
+    return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1;
+  };
+}
+function normalizeName(name) {
+  if (typeof name !== 'string') {
+    name = String(name);
+  }
+  if (/[^a-z0-9\-#$%&'*+.^_`|~!]/i.test(name) || name === '') {
+    throw new TypeError('Invalid character in header field name: "' + name + '"');
+  }
+  return name.toLowerCase();
+}
+function normalizeValue(value) {
+  if (typeof value !== 'string') {
+    value = String(value);
+  }
+  return value;
+}
+
+// Build a destructive iterator for the value list
+function iteratorFor(items) {
+  var iterator = {
+    next: function next() {
+      var value = items.shift();
+      return {
+        done: value === undefined,
+        value: value
+      };
+    }
+  };
+  if (support.iterable) {
+    iterator[Symbol.iterator] = function () {
+      return iterator;
+    };
+  }
+  return iterator;
+}
+function Headers(headers) {
+  this.map = {};
+  if (headers instanceof Headers) {
+    headers.forEach(function (value, name) {
+      this.append(name, value);
+    }, this);
+  } else if (Array.isArray(headers)) {
+    headers.forEach(function (header) {
+      if (header.length != 2) {
+        throw new TypeError('Headers constructor: expected name/value pair to be length 2, found' + header.length);
+      }
+      this.append(header[0], header[1]);
+    }, this);
+  } else if (headers) {
+    Object.getOwnPropertyNames(headers).forEach(function (name) {
+      this.append(name, headers[name]);
+    }, this);
+  }
+}
+Headers.prototype.append = function (name, value) {
+  name = normalizeName(name);
+  value = normalizeValue(value);
+  var oldValue = this.map[name];
+  this.map[name] = oldValue ? oldValue + ', ' + value : value;
+};
+Headers.prototype['delete'] = function (name) {
+  delete this.map[normalizeName(name)];
+};
+Headers.prototype.get = function (name) {
+  name = normalizeName(name);
+  return this.has(name) ? this.map[name] : null;
+};
+Headers.prototype.has = function (name) {
+  return this.map.hasOwnProperty(normalizeName(name));
+};
+Headers.prototype.set = function (name, value) {
+  this.map[normalizeName(name)] = normalizeValue(value);
+};
+Headers.prototype.forEach = function (callback, thisArg) {
+  for (var name in this.map) {
+    if (this.map.hasOwnProperty(name)) {
+      callback.call(thisArg, this.map[name], name, this);
+    }
+  }
+};
+Headers.prototype.keys = function () {
+  var items = [];
+  this.forEach(function (value, name) {
+    items.push(name);
+  });
+  return iteratorFor(items);
+};
+Headers.prototype.values = function () {
+  var items = [];
+  this.forEach(function (value) {
+    items.push(value);
+  });
+  return iteratorFor(items);
+};
+Headers.prototype.entries = function () {
+  var items = [];
+  this.forEach(function (value, name) {
+    items.push([name, value]);
+  });
+  return iteratorFor(items);
+};
+if (support.iterable) {
+  Headers.prototype[Symbol.iterator] = Headers.prototype.entries;
+}
+function consumed(body) {
+  if (body._noBody) return;
+  if (body.bodyUsed) {
+    return Promise.reject(new TypeError('Already read'));
+  }
+  body.bodyUsed = true;
+}
+function fileReaderReady(reader) {
+  return new Promise(function (resolve, reject) {
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.onerror = function () {
+      reject(reader.error);
+    };
+  });
+}
+function readBlobAsArrayBuffer(blob) {
+  var reader = new FileReader();
+  var promise = fileReaderReady(reader);
+  reader.readAsArrayBuffer(blob);
+  return promise;
+}
+function readBlobAsText(blob) {
+  var reader = new FileReader();
+  var promise = fileReaderReady(reader);
+  var match = /charset=([A-Za-z0-9_-]+)/.exec(blob.type);
+  var encoding = match ? match[1] : 'utf-8';
+  reader.readAsText(blob, encoding);
+  return promise;
+}
+function readArrayBufferAsText(buf) {
+  var view = new Uint8Array(buf);
+  var chars = new Array(view.length);
+  for (var i = 0; i < view.length; i++) {
+    chars[i] = String.fromCharCode(view[i]);
+  }
+  return chars.join('');
+}
+function bufferClone(buf) {
+  if (buf.slice) {
+    return buf.slice(0);
+  } else {
+    var view = new Uint8Array(buf.byteLength);
+    view.set(new Uint8Array(buf));
+    return view.buffer;
+  }
+}
+function Body() {
+  this.bodyUsed = false;
+  this._initBody = function (body) {
+    /*
+      fetch-mock wraps the Response object in an ES6 Proxy to
+      provide useful test harness features such as flush. However, on
+      ES5 browsers without fetch or Proxy support pollyfills must be used;
+      the proxy-pollyfill is unable to proxy an attribute unless it exists
+      on the object before the Proxy is created. This change ensures
+      Response.bodyUsed exists on the instance, while maintaining the
+      semantic of setting Request.bodyUsed in the constructor before
+      _initBody is called.
+    */
+    // eslint-disable-next-line no-self-assign
+    this.bodyUsed = this.bodyUsed;
+    this._bodyInit = body;
+    if (!body) {
+      this._noBody = true;
+      this._bodyText = '';
+    } else if (typeof body === 'string') {
+      this._bodyText = body;
+    } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
+      this._bodyBlob = body;
+    } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
+      this._bodyFormData = body;
+    } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+      this._bodyText = body.toString();
+    } else if (support.arrayBuffer && support.blob && isDataView(body)) {
+      this._bodyArrayBuffer = bufferClone(body.buffer);
+      // IE 10-11 can't handle a DataView body.
+      this._bodyInit = new Blob([this._bodyArrayBuffer]);
+    } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
+      this._bodyArrayBuffer = bufferClone(body);
+    } else {
+      this._bodyText = body = Object.prototype.toString.call(body);
+    }
+    if (!this.headers.get('content-type')) {
+      if (typeof body === 'string') {
+        this.headers.set('content-type', 'text/plain;charset=UTF-8');
+      } else if (this._bodyBlob && this._bodyBlob.type) {
+        this.headers.set('content-type', this._bodyBlob.type);
+      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
+        this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+      }
+    }
+  };
+  if (support.blob) {
+    this.blob = function () {
+      var rejected = consumed(this);
+      if (rejected) {
+        return rejected;
+      }
+      if (this._bodyBlob) {
+        return Promise.resolve(this._bodyBlob);
+      } else if (this._bodyArrayBuffer) {
+        return Promise.resolve(new Blob([this._bodyArrayBuffer]));
+      } else if (this._bodyFormData) {
+        throw new Error('could not read FormData body as blob');
+      } else {
+        return Promise.resolve(new Blob([this._bodyText]));
+      }
+    };
+  }
+  this.arrayBuffer = function () {
+    if (this._bodyArrayBuffer) {
+      var isConsumed = consumed(this);
+      if (isConsumed) {
+        return isConsumed;
+      } else if (ArrayBuffer.isView(this._bodyArrayBuffer)) {
+        return Promise.resolve(this._bodyArrayBuffer.buffer.slice(this._bodyArrayBuffer.byteOffset, this._bodyArrayBuffer.byteOffset + this._bodyArrayBuffer.byteLength));
+      } else {
+        return Promise.resolve(this._bodyArrayBuffer);
+      }
+    } else if (support.blob) {
+      return this.blob().then(readBlobAsArrayBuffer);
+    } else {
+      throw new Error('could not read as ArrayBuffer');
+    }
+  };
+  this.text = function () {
+    var rejected = consumed(this);
+    if (rejected) {
+      return rejected;
+    }
+    if (this._bodyBlob) {
+      return readBlobAsText(this._bodyBlob);
+    } else if (this._bodyArrayBuffer) {
+      return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer));
+    } else if (this._bodyFormData) {
+      throw new Error('could not read FormData body as text');
+    } else {
+      return Promise.resolve(this._bodyText);
+    }
+  };
+  if (support.formData) {
+    this.formData = function () {
+      return this.text().then(decode);
+    };
+  }
+  this.json = function () {
+    return this.text().then(JSON.parse);
+  };
+  return this;
+}
+
+// HTTP methods whose capitalization should be normalized
+var methods = ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'PATCH', 'POST', 'PUT', 'TRACE'];
+function normalizeMethod(method) {
+  var upcased = method.toUpperCase();
+  return methods.indexOf(upcased) > -1 ? upcased : method;
+}
+function Request(input, options) {
+  if (!(this instanceof Request)) {
+    throw new TypeError('Please use the "new" operator, this DOM object constructor cannot be called as a function.');
+  }
+  options = options || {};
+  var body = options.body;
+  if (input instanceof Request) {
+    if (input.bodyUsed) {
+      throw new TypeError('Already read');
+    }
+    this.url = input.url;
+    this.credentials = input.credentials;
+    if (!options.headers) {
+      this.headers = new Headers(input.headers);
+    }
+    this.method = input.method;
+    this.mode = input.mode;
+    this.signal = input.signal;
+    if (!body && input._bodyInit != null) {
+      body = input._bodyInit;
+      input.bodyUsed = true;
+    }
+  } else {
+    this.url = String(input);
+  }
+  this.credentials = options.credentials || this.credentials || 'same-origin';
+  if (options.headers || !this.headers) {
+    this.headers = new Headers(options.headers);
+  }
+  this.method = normalizeMethod(options.method || this.method || 'GET');
+  this.mode = options.mode || this.mode || null;
+  this.signal = options.signal || this.signal || function () {
+    if ('AbortController' in g) {
+      var ctrl = new AbortController();
+      return ctrl.signal;
+    }
+  }();
+  this.referrer = null;
+  if ((this.method === 'GET' || this.method === 'HEAD') && body) {
+    throw new TypeError('Body not allowed for GET or HEAD requests');
+  }
+  this._initBody(body);
+  if (this.method === 'GET' || this.method === 'HEAD') {
+    if (options.cache === 'no-store' || options.cache === 'no-cache') {
+      // Search for a '_' parameter in the query string
+      var reParamSearch = /([?&])_=[^&]*/;
+      if (reParamSearch.test(this.url)) {
+        // If it already exists then set the value with the current time
+        this.url = this.url.replace(reParamSearch, '$1_=' + new Date().getTime());
+      } else {
+        // Otherwise add a new '_' parameter to the end with the current time
+        var reQueryString = /\?/;
+        this.url += (reQueryString.test(this.url) ? '&' : '?') + '_=' + new Date().getTime();
+      }
+    }
+  }
+}
+Request.prototype.clone = function () {
+  return new Request(this, {
+    body: this._bodyInit
+  });
+};
+function decode(body) {
+  var form = new FormData();
+  body.trim().split('&').forEach(function (bytes) {
+    if (bytes) {
+      var split = bytes.split('=');
+      var name = split.shift().replace(/\+/g, ' ');
+      var value = split.join('=').replace(/\+/g, ' ');
+      form.append(decodeURIComponent(name), decodeURIComponent(value));
+    }
+  });
+  return form;
+}
+function parseHeaders(rawHeaders) {
+  var headers = new Headers();
+  // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
+  // https://tools.ietf.org/html/rfc7230#section-3.2
+  var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ');
+  // Avoiding split via regex to work around a common IE11 bug with the core-js 3.6.0 regex polyfill
+  // https://github.com/github/fetch/issues/748
+  // https://github.com/zloirock/core-js/issues/751
+  preProcessedHeaders.split('\r').map(function (header) {
+    return header.indexOf('\n') === 0 ? header.substr(1, header.length) : header;
+  }).forEach(function (line) {
+    var parts = line.split(':');
+    var key = parts.shift().trim();
+    if (key) {
+      var value = parts.join(':').trim();
+      try {
+        headers.append(key, value);
+      } catch (error) {
+        console.warn('Response ' + error.message);
+      }
+    }
+  });
+  return headers;
+}
+Body.call(Request.prototype);
+function Response(bodyInit, options) {
+  if (!(this instanceof Response)) {
+    throw new TypeError('Please use the "new" operator, this DOM object constructor cannot be called as a function.');
+  }
+  if (!options) {
+    options = {};
+  }
+  this.type = 'default';
+  this.status = options.status === undefined ? 200 : options.status;
+  if (this.status < 200 || this.status > 599) {
+    throw new RangeError("Failed to construct 'Response': The status provided (0) is outside the range [200, 599].");
+  }
+  this.ok = this.status >= 200 && this.status < 300;
+  this.statusText = options.statusText === undefined ? '' : '' + options.statusText;
+  this.headers = new Headers(options.headers);
+  this.url = options.url || '';
+  this._initBody(bodyInit);
+}
+Body.call(Response.prototype);
+Response.prototype.clone = function () {
+  return new Response(this._bodyInit, {
+    status: this.status,
+    statusText: this.statusText,
+    headers: new Headers(this.headers),
+    url: this.url
+  });
+};
+Response.error = function () {
+  var response = new Response(null, {
+    status: 200,
+    statusText: ''
+  });
+  response.ok = false;
+  response.status = 0;
+  response.type = 'error';
+  return response;
+};
+var redirectStatuses = [301, 302, 303, 307, 308];
+Response.redirect = function (url, status) {
+  if (redirectStatuses.indexOf(status) === -1) {
+    throw new RangeError('Invalid status code');
+  }
+  return new Response(null, {
+    status: status,
+    headers: {
+      location: url
+    }
+  });
+};
+var DOMException = g.DOMException;
+try {
+  new DOMException();
+} catch (err) {
+  DOMException = function DOMException(message, name) {
+    this.message = message;
+    this.name = name;
+    var error = Error(message);
+    this.stack = error.stack;
+  };
+  DOMException.prototype = Object.create(Error.prototype);
+  DOMException.prototype.constructor = DOMException;
+}
+function fetch(input, init) {
+  return new Promise(function (resolve, reject) {
+    var request = new Request(input, init);
+    if (request.signal && request.signal.aborted) {
+      return reject(new DOMException('Aborted', 'AbortError'));
+    }
+    var xhr = new XMLHttpRequest();
+    function abortXhr() {
+      xhr.abort();
+    }
+    xhr.onload = function () {
+      var options = {
+        statusText: xhr.statusText,
+        headers: parseHeaders(xhr.getAllResponseHeaders() || '')
+      };
+      // This check if specifically for when a user fetches a file locally from the file system
+      // Only if the status is out of a normal range
+      if (request.url.indexOf('file://') === 0 && (xhr.status < 200 || xhr.status > 599)) {
+        options.status = 200;
+      } else {
+        options.status = xhr.status;
+      }
+      options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL');
+      var body = 'response' in xhr ? xhr.response : xhr.responseText;
+      setTimeout(function () {
+        resolve(new Response(body, options));
+      }, 0);
+    };
+    xhr.onerror = function () {
+      setTimeout(function () {
+        reject(new TypeError('Network request failed'));
+      }, 0);
+    };
+    xhr.ontimeout = function () {
+      setTimeout(function () {
+        reject(new TypeError('Network request timed out'));
+      }, 0);
+    };
+    xhr.onabort = function () {
+      setTimeout(function () {
+        reject(new DOMException('Aborted', 'AbortError'));
+      }, 0);
+    };
+    function fixUrl(url) {
+      try {
+        return url === '' && g.location.href ? g.location.href : url;
+      } catch (e) {
+        return url;
+      }
+    }
+    xhr.open(request.method, fixUrl(request.url), true);
+    if (request.credentials === 'include') {
+      xhr.withCredentials = true;
+    } else if (request.credentials === 'omit') {
+      xhr.withCredentials = false;
+    }
+    if ('responseType' in xhr) {
+      if (support.blob) {
+        xhr.responseType = 'blob';
+      } else if (support.arrayBuffer) {
+        xhr.responseType = 'arraybuffer';
+      }
+    }
+    if (init && typeof init.headers === 'object' && !(init.headers instanceof Headers || g.Headers && init.headers instanceof g.Headers)) {
+      var names = [];
+      Object.getOwnPropertyNames(init.headers).forEach(function (name) {
+        names.push(normalizeName(name));
+        xhr.setRequestHeader(name, normalizeValue(init.headers[name]));
+      });
+      request.headers.forEach(function (value, name) {
+        if (names.indexOf(name) === -1) {
+          xhr.setRequestHeader(name, value);
+        }
+      });
+    } else {
+      request.headers.forEach(function (value, name) {
+        xhr.setRequestHeader(name, value);
+      });
+    }
+    if (request.signal) {
+      request.signal.addEventListener('abort', abortXhr);
+      xhr.onreadystatechange = function () {
+        // DONE (success or failure)
+        if (xhr.readyState === 4) {
+          request.signal.removeEventListener('abort', abortXhr);
+        }
+      };
+    }
+    xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit);
+  });
+}
+fetch.polyfill = true;
+if (!g.fetch) {
+  g.fetch = fetch;
+  g.Headers = Headers;
+  g.Request = Request;
+  g.Response = Response;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
+
+/***/ })
+
+}]);
+//# sourceMappingURL=vendors~fetch-hydejack-9.2.1.js.map

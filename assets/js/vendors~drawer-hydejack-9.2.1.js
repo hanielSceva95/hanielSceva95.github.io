@@ -1,31 +1,209 @@
-/*!
- *  __  __                __                                     __
- * /\ \/\ \              /\ \             __                    /\ \
- * \ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
- *  \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
- *   \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
- *    \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
- *     \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
- *                 /\___/                \ \____/
- *                 \/__/                  \/___/
- *
- * Powered by Hydejack v9.2.1 <https://hydejack.com/>
- */
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{208:function(e,t,n){"use strict";n.r(t),n.d(t,"HyDrawer",(function(){return ce}));var i=n(0),r=n(188),a=n(176);
-/**
- * @license
- * Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
- * This code may only be used under the BSD style license found at
- * http://polymer.github.io/LICENSE.txt
- * The complete set of authors may be found at
- * http://polymer.github.io/AUTHORS.txt
- * The complete set of contributors may be found at
- * http://polymer.github.io/CONTRIBUTORS.txt
- * Code distributed by Google as part of the polymer project is also
- * subject to an additional IP rights grant found at
- * http://polymer.github.io/PATENTS.txt
- */
-class s{constructor(e){this.classes=new Set,this.changed=!1,this.element=e;var t=(e.getAttribute("class")||"").split(/\s+/);for(var n of t)this.classes.add(n)}add(e){this.classes.add(e),this.changed=!0}remove(e){this.classes.delete(e),this.changed=!0}commit(){if(this.changed){var e="";this.classes.forEach(t=>e+=t+" "),this.element.setAttribute("class",e)}}}var c=new WeakMap,o=Object(a.c)(e=>t=>{if(!(t instanceof a.a)||t instanceof a.b||"class"!==t.committer.name||t.committer.parts.length>1)throw new Error("The `classMap` directive must be used in the `class` attribute and must be the only part in the attribute.");var{committer:n}=t,{element:i}=n,r=c.get(t);void 0===r&&(i.setAttribute("class",n.strings.join(" ")),c.set(t,r=new Set));var o=i.classList||new s(i);for(var l in r.forEach(t=>{t in e||(o.remove(t),r.delete(t))}),e){var b=e[l];b!=r.has(l)&&(b?(o.add(l),r.add(l)):(o.remove(l),r.delete(l)))}"function"==typeof o.commit&&o.commit()}),l=new WeakMap,b=Object(a.c)(e=>t=>{if(!(t instanceof a.a)||t instanceof a.b||"style"!==t.committer.name||t.committer.parts.length>1)throw new Error("The `styleMap` directive must be used in the style attribute and must be the only part in the attribute.");var{committer:n}=t,{style:i}=n.element,r=l.get(t);for(var s in void 0===r&&(i.cssText=n.strings.join(" "),l.set(t,r=new Set)),r.forEach(t=>{t in e||(r.delete(t),-1===t.indexOf("-")?i[t]=null:i.removeProperty(t))}),e)r.add(s),-1===s.indexOf("-")?i[s]=e[s]:i.setProperty(s,e[s])}),h=n(213),p=n(223),u=n(195),d=n(172),v=n(106),O=n(216),j=n(182),f=n(24),g=n(192),m=n(107),w=n(108),y=n(5),E=n(4),x=n(25),k=n(3);var S=n(100);var M=n(196),C=n(104),z=n(194),X=n(105),$=n(214),D=n(215);var I=n(174),T=n(79);function W(e,t,n,i){return n*Math.sin(e/i*(Math.PI/2))+t}function A(e){return("ResizeObserver"in window?Object(I.e)(e):Object(T.a)({contentRect:{width:e.clientWidth}})).pipe(Object(f.a)(e=>{var{contentRect:{width:t}}=e;return t}))}var P={fromAttribute:e=>(null!=e?e:"").replace(/[\[\]]/g,"").split(",").map(Number),toAttribute:e=>e.join(",")};var Y=n(193),R=n(212);function B(e){return Object(E.a)((function(t,n){var i,r,a=!1,s=!1,c=!1,o=function(){return c&&s&&(n.complete(),!0)},l=function(){c=!1,i=t.subscribe(Object(k.a)(n,void 0,(function(){c=!0,!o()&&(r||(r=new j.a,Object(y.a)(e(r)).subscribe(Object(k.a)(n,(function(){i?l():a=!0}),(function(){s=!0,o()})))),r).next()}))),a&&(i.unsubscribe(),i=null,a=!1,l())};l()}))}var F=Math.abs.bind(Math);class J{getStartObservable(){return Object(p.a)([this.$.mouseEvents]).pipe(Object(X.a)(e=>{var[t]=e,n=Object(d.a)(document,"touchstart",{passive:!0}).pipe(Object(C.a)(e=>{var{touches:t}=e;return 1===t.length}),Object(f.a)(e=>{var{touches:t}=e;return t[0]})),i=t?Object(d.a)(document,"mousedown").pipe(Object(f.a)(e=>(e.event=e,e))):v.a;return Object(u.a)(n,i)}))}getMoveObservable(e,t){return Object(p.a)([this.$.mouseEvents,this.$.preventDefault]).pipe(Object(X.a)(n=>{var[i,r]=n,a=Object(d.a)(document,"touchmove",{passive:!r}).pipe(Object(f.a)(e=>(e.touches[0].event=e,e.touches[0]))),s=i?Object(d.a)(document,"mousemove",{passive:!r}).pipe(Object(I.l)(Object(u.a)(e.pipe(Object(Y.a)(!0)),t.pipe(Object(Y.a)(!1)))),Object(f.a)(e=>(e.event=e,e))):v.a;return Object(u.a)(a,s)}))}getEndObservable(){return Object(p.a)([this.$.mouseEvents]).pipe(Object(X.a)(e=>{var[t]=e,n=Object(d.a)(document,"touchend",{passive:!0}).pipe(Object(C.a)(e=>{var{touches:t}=e;return 0===t.length}),Object(f.a)(e=>e.changedTouches[0])),i=t?Object(d.a)(document,"mouseup",{passive:!0}).pipe(Object(f.a)(e=>(e.event=e,e))):v.a;return Object(u.a)(n,i)}))}getIsSlidingObservable(e,t,n){return this.getIsSlidingObservableInner(e,t).pipe(Object(R.a)(1),Object(z.a)(void 0),B(()=>n))}getIsSlidingObservableInner(e,t){return this.threshold?e.pipe(Object(m.a)(t),(n=e=>{var[{clientX:t,clientY:n},{clientX:i,clientY:r}]=e;return F(r-n)<this.threshold&&F(i-t)<this.threshold},Object(E.a)((function(e,t){var i=!1,r=0;e.subscribe(Object(k.a)(t,(function(e){return(i||(i=!n(e,r++)))&&t.next(e)})))}))),Object(f.a)(e=>{var[{clientX:t,clientY:n},{clientX:i,clientY:r}]=e;return F(i-t)>=F(r-n)})):e.pipe(Object(m.a)(t),Object(f.a)(e=>{var[{clientX:t,clientY:n,event:i},{clientX:r,clientY:a}]=e,s=F(r-t)>=F(a-n);return this.noScroll&&s&&i&&i.preventDefault(),s}));var n}}var N,U=Math.min.bind(Math),H=Math.max.bind(Math);class L{calcIsInRange(e,t){var{clientX:n}=e;switch(this.side){case"left":var[i,r]=this.range;return n>i&&(t||n<r);case"right":var a=window.innerWidth-this.range[0],s=window.innerWidth-this.range[1];return n<a&&(t||n>s);default:throw Error()}}calcIsSwipe(e,t,n,i,r){var{clientX:a}=e,{clientX:s}=t;return s!==a||n>0&&n<i}calcWillOpen(e,t,n,i,r){switch(this.side){case"left":return r>.15||!(r<-.15)&&n>=i/2;case"right":return-r>.15||!(-r<-.15)&&n<=-i/2;default:throw Error()}}calcTranslateX(e,t,n,i){var{clientX:r}=e,{clientX:a}=t;switch(this.side){case"left":return H(0,U(i,n+(r-a)));case"right":return U(0,H(-i,n+(r-a)));default:throw Error()}}}class V{updateDOM(e,t){var n=e/t*("left"===this.side?1:-1)||0;this.translateX=e,this.opacity=n,this.updater.updateDOM(e,n)}}class q{constructor(e){this.parent=e}static getUpdaterForPlatform(e){return"attributeStyleMap"in Element.prototype&&"CSS"in window&&"number"in CSS?new K(e):new G(e)}get contentEl(){return this.parent.contentEl}get scrimEl(){return this.parent.scrimEl}}class G extends q{constructor(e){super(e)}updateDOM(e,t){this.contentEl.style.transform="translate(".concat(e,"px, 0px)"),this.scrimEl.style.opacity="".concat(t)}}class K extends q{constructor(e){super(e),this.tvalue=new CSSTransformValue([new CSSTranslate(CSS.px(0),CSS.px(0))]),this.ovalue=CSS.number(1)}updateDOM(e,t){this.tvalue[0].x.value=e,this.ovalue.value=t,this.contentEl.attributeStyleMap.set("transform",this.tvalue),this.scrimEl.attributeStyleMap.set("opacity",this.ovalue)}}var Q,Z,_,ee,te,ne,ie,re,ae=Object(r.b)(N||(Q=["\n  @media screen {\n    :host {\n      touch-action: pan-x;\n    }\n\n    .full-screen {\n      position: fixed;\n      top: 0;\n      left: 0;\n      height: 100vh;\n      width: 100vw;\n    }\n\n    .full-height {\n      position: fixed;\n      top: 0;\n      height: 100vh;\n    }\n\n    .peek {\n      left: 0;\n      width: var(--hy-drawer-peek-width, 0px);\n      visibility: hidden;\n      z-index: calc(var(--hy-drawer-z-index, 100) - 1);\n    }\n\n    .scrim {\n      position: fixed;\n      top: 0;\n      left: 0;\n      height: 10vh;\n      width: 10vw;\n      transform: scale(10);\n      transform-origin: top left;\n      opacity: 0;\n      pointer-events: none;\n      background: var(--hy-drawer-scrim-background, rgba(0, 0, 0, 0.5));\n      z-index: var(--hy-drawer-z-index, 100);\n      -webkit-tap-highlight-color: transparent;\n    }\n\n    .range {\n      position: fixed;\n      top: 0;\n      height: 100vh;\n      z-index: calc(var(--hy-drawer-z-index, 100) + 1);\n    }\n\n    .grabbing-screen {\n      cursor: grabbing;\n      z-index: calc(var(--hy-drawer-z-index, 100) + 2);\n    }\n\n    .wrapper {\n      width: var(--hy-drawer-width, 300px);\n      background: var(--hy-drawer-background, inherit);\n      box-shadow: var(--hy-drawer-box-shadow, 0 0 15px rgba(0, 0, 0, 0.25));\n      z-index: calc(var(--hy-drawer-z-index, 100) + 3);\n      contain: strict;\n    }\n\n    .wrapper.left {\n      left:  calc(-1 * var(--hy-drawer-width, 300px) + var(--hy-drawer-peek-width, 0px));\n    }\n\n    .wrapper.right {\n      right:  calc(-1 * var(--hy-drawer-width, 300px) + var(--hy-drawer-peek-width, 0px));\n    }\n\n    .wrapper > .overflow {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      overflow-x: hidden;\n      overflow-y: auto;\n      overscroll-behavior: contain;\n      -webkit-overflow-scrolling: touch;\n    }\n\n    .grab {\n      cursor: move;\n      cursor: grab;\n    }\n\n    .grabbing {\n      cursor: grabbing;\n    }\n  }\n\n  @media print {\n    .scrim {\n      display: none !important;\n    }\n\n    .wrapper {\n      transform: none !important;\n    }\n  }\n"],Z||(Z=Q.slice(0)),N=Object.freeze(Object.defineProperties(Q,{raw:{value:Object.freeze(Z)}}))));function se(e,t){return t||(t=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~drawer"],{
+
+/***/ "./node_modules/@hydecorp/drawer/lib/calc.js":
+/*!***************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/calc.js ***!
+  \***************************************************/
+/*! exports provided: CalcMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalcMixin", function() { return CalcMixin; });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./node_modules/@hydecorp/drawer/lib/constants.js");
+
+// Using shorthands for common functions
+var min = Math.min.bind(Math);
+var max = Math.max.bind(Math);
+class CalcMixin {
+  calcIsInRange(_ref, opened) {
+    var {
+      clientX
+    } = _ref;
+    // console.log(this.range, this.align);
+    switch (this.side) {
+      case "left":
+        {
+          var [lower, upper] = this.range;
+          return clientX > lower && (opened || clientX < upper);
+        }
+      case "right":
+        {
+          var _upper = window.innerWidth - this.range[0];
+          var _lower = window.innerWidth - this.range[1];
+          return clientX < _upper && (opened || clientX > _lower);
+        }
+      default:
+        throw Error();
+    }
+  }
+  calcIsSwipe(_ref2, _ref3, translateX, drawerWidth, _) {
+    var {
+      clientX: startX
+    } = _ref2;
+    var {
+      clientX: endX
+    } = _ref3;
+    return endX !== startX || translateX > 0 && translateX < drawerWidth;
+  }
+  calcWillOpen(_, __, translateX, drawerWidth, velocity) {
+    switch (this.side) {
+      case "left":
+        {
+          if (velocity > _constants__WEBPACK_IMPORTED_MODULE_0__["VELOCITY_THRESHOLD"]) return true;else if (velocity < -_constants__WEBPACK_IMPORTED_MODULE_0__["VELOCITY_THRESHOLD"]) return false;else if (translateX >= drawerWidth / 2) return true;else return false;
+        }
+      case "right":
+        {
+          if (-velocity > _constants__WEBPACK_IMPORTED_MODULE_0__["VELOCITY_THRESHOLD"]) return true;else if (-velocity < -_constants__WEBPACK_IMPORTED_MODULE_0__["VELOCITY_THRESHOLD"]) return false;else if (translateX <= -drawerWidth / 2) return true;else return false;
+        }
+      default:
+        throw Error();
+    }
+  }
+  calcTranslateX(_ref4, _ref5, startTranslateX, drawerWidth) {
+    var {
+      clientX: moveX
+    } = _ref4;
+    var {
+      clientX: startX
+    } = _ref5;
+    switch (this.side) {
+      case "left":
+        {
+          var deltaX = moveX - startX;
+          var translateX = startTranslateX + deltaX;
+          return max(0, min(drawerWidth, translateX));
+        }
+      case "right":
+        {
+          var _deltaX = moveX - startX;
+          var _translateX = startTranslateX + _deltaX;
+          return min(0, max(-drawerWidth, _translateX));
+        }
+      default:
+        throw Error();
+    }
+  }
+}
+;
+
+/***/ }),
+
+/***/ "./node_modules/@hydecorp/drawer/lib/common.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/common.js ***!
+  \*****************************************************/
+/*! exports provided: applyMixins, subscribeWhen, filterWhen, tween, easeOutSine, observeWidth, rangeConverter, rangeHasChanged */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "easeOutSine", function() { return easeOutSine; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "observeWidth", function() { return observeWidth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rangeConverter", function() { return rangeConverter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rangeHasChanged", function() { return rangeHasChanged; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _hydecorp_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @hydecorp/component */ "./node_modules/@hydecorp/component/lib/index.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "applyMixins", function() { return _hydecorp_component__WEBPACK_IMPORTED_MODULE_2__["applyMixins"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "subscribeWhen", function() { return _hydecorp_component__WEBPACK_IMPORTED_MODULE_2__["subscribeWhen"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "filterWhen", function() { return _hydecorp_component__WEBPACK_IMPORTED_MODULE_2__["filterWhen"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "tween", function() { return _hydecorp_component__WEBPACK_IMPORTED_MODULE_2__["tween"]; });
+
+
+
+
+
+function easeOutSine(t, b, c, d) {
+  return c * Math.sin(t / d * (Math.PI / 2)) + b;
+}
+function observeWidth(el) {
+  // This component should have at least basic support without `ResizeObserver` support,
+  // so we pass a one-time measurement when it's missing. Obviously this won't update, so BYO polyfill.
+  var resize$ = "ResizeObserver" in window ? Object(_hydecorp_component__WEBPACK_IMPORTED_MODULE_2__["createResizeObservable"])(el) : Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["of"])({
+    contentRect: {
+      width: el.clientWidth
+    }
+  });
+  return resize$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref => {
+    var {
+      contentRect: {
+        width
+      }
+    } = _ref;
+    return width;
+  }));
+}
+var rangeConverter = {
+  fromAttribute(attr) {
+    return (attr !== null && attr !== void 0 ? attr : '').replace(/[\[\]]/g, '').split(',').map(Number);
+  },
+  toAttribute(range) {
+    return range.join(',');
+  }
+};
+function rangeHasChanged(curr) {
+  var prev = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  return curr.length !== prev.length || curr.some((v, i) => v !== prev[i]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@hydecorp/drawer/lib/constants.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/constants.js ***!
+  \********************************************************/
+/*! exports provided: BASE_DURATION, WIDTH_CONTRIBUTION, VELOCITY_THRESHOLD */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BASE_DURATION", function() { return BASE_DURATION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WIDTH_CONTRIBUTION", function() { return WIDTH_CONTRIBUTION; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VELOCITY_THRESHOLD", function() { return VELOCITY_THRESHOLD; });
+// The base duration of the fling animation.
+var BASE_DURATION = 200;
+// We adjust the duration of the animation using the width of the drawer.
+// There is no physics to this, but we know from testing that the animation starts to feel bad
+// when the drawer increases in size.
+// From testing we know that, if we increase the duration as a fraction of the drawer width,
+// the animation stays smooth across common display sizes.
+var WIDTH_CONTRIBUTION = 0.15;
+// Minimum velocity of the drawer (in px/ms) when releasing to make it fling to opened/closed state.
+var VELOCITY_THRESHOLD = 0.15;
+
+/***/ }),
+
+/***/ "./node_modules/@hydecorp/drawer/lib/index.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/index.js ***!
+  \****************************************************/
+/*! exports provided: HyDrawer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HyDrawer", function() { return HyDrawer; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var lit_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lit-element */ "./node_modules/lit-element/lit-element.js");
+/* harmony import */ var lit_html_directives_class_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lit-html/directives/class-map */ "./node_modules/lit-html/directives/class-map.js");
+/* harmony import */ var lit_html_directives_style_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lit-html/directives/style-map */ "./node_modules/lit-html/directives/style-map.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _hydecorp_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @hydecorp/component */ "./node_modules/@hydecorp/component/lib/index.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./constants */ "./node_modules/@hydecorp/drawer/lib/constants.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./common */ "./node_modules/@hydecorp/drawer/lib/common.js");
+/* harmony import */ var _observables__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./observables */ "./node_modules/@hydecorp/drawer/lib/observables.js");
+/* harmony import */ var _calc__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./calc */ "./node_modules/@hydecorp/drawer/lib/calc.js");
+/* harmony import */ var _update__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./update */ "./node_modules/@hydecorp/drawer/lib/update.js");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./styles */ "./node_modules/@hydecorp/drawer/lib/styles.js");
+var _templateObject, _templateObject2;
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+var _HyDrawer_initialized, _HyDrawer_translateX$, _HyDrawer_startTranslateX$, _HyDrawer_tweenTranslateX$;
+
 /**
  * Copyright (c) 2020 Florian Klampfer <https://qwtel.com/>
  *
@@ -45,4 +223,705 @@ class s{constructor(e){this.classes=new Set,this.changed=!1,this.element=e;var t
  * @license
  * @nocompile
  */
-var ce=class extends(Object(I.b)(I.a,[J,V,L])){constructor(){super(...arguments),this.opened=!1,this.side="left",this.persistent=!1,this.threshold=10,this.noScroll=!1,this.mouseEvents=!1,this.range=[0,100],this.willChange=!1,te.set(this,Object(I.f)()),ne.set(this,void 0),ie.set(this,void 0),re.set(this,void 0),this.upgrade=()=>{var e,t=this.getDrawerWidth(),n=this.$.persistent.pipe(Object(f.a)(e=>!e)),r=this.getStartObservable().pipe(Object(I.h)(n),Object(g.a)()),a=Object(h.a)(()=>Object(i.e)(this,ne,"f").pipe(Object(f.a)(e=>0!==e))),s=r.pipe(Object(m.a)(a),Object(f.a)(e=>this.calcIsInRange(...e)),Object(w.a)(e=>{e&&(this.willChange=!0,this.fireEvent("prepare"))}),Object(g.a)()),c=this.getEndObservable().pipe(Object(I.h)(n,s),Object(w.a)(()=>{this.mouseEvents&&(this.grabbing=!1)}),Object(g.a)()),o=this.getMoveObservable(r,c).pipe(Object(I.h)(n,s),Object(g.a)()),l=this.getIsSlidingObservable(o,r,c).pipe(Object(w.a)(e=>{this.isSliding=e,e&&this.mouseEvents&&(this.grabbing=!0)})),b=Object(i.f)(this,ne,Object(h.a)(()=>{var e=Object(p.a)([this.$.opened,this.$.side,t]).pipe(Object(f.a)(e=>{var[t,n,i]=e;return t?i*("left"===n?1:-1):0})),n=o.pipe(Object(I.h)(l),Object(w.a)(()=>this.scrimClickable=!1),Object(w.a)(e=>{var{event:t}=e;return t&&this.noScroll&&t.preventDefault()}),Object(m.a)(r,Object(i.e)(this,ie,"f"),t),Object(f.a)(e=>this.calcTranslateX(...e)));return Object(u.a)(Object(i.e)(this,re,"f"),e,n)}).pipe(Object(g.a)()),"f");Object(i.f)(this,ie,b.pipe((e=r,Object(E.a)((function(t,n){var i=!1,r=null;t.subscribe(Object(k.a)(n,(function(e){i=!0,r=e}))),Object(y.a)(e).subscribe(Object(k.a)(n,(function(){if(i){i=!1;var e=r;r=null,n.next(e)}}),x.a))})))),"f");var O,j=b.pipe((void 0===O&&(O=S.a),Object(f.a)((function(e){return{value:e,timestamp:O.now()}}))),Object(M.a)(),Object(C.a)(e=>{var[{timestamp:t},{timestamp:n}]=e;return n-t>0}),Object(f.a)(e=>{var[{value:t,timestamp:n},{value:i,timestamp:r}]=e;return(i-t)/(r-n)}),Object(z.a)(0)),T=c.pipe(Object(m.a)(r,b,t,j),Object(C.a)(e=>this.calcIsSwipe(...e)),Object(f.a)(e=>this.calcWillOpen(...e))),A=this.animateTo$.pipe(Object(w.a)(()=>{this.willChange=!0,this.fireEvent("prepare")}));Object(i.f)(this,re,Object(u.a)(T,A).pipe(Object(m.a)(b,t),Object(X.a)(e=>{var t,[n,i,a]=e,s="left"===this.side?1:-1,c=(n?a*s:0)-i,o=Math.ceil(200+.15*a);return Object(I.m)(W,i,c,o).pipe(Object($.a)(()=>{this.transitioned(n)}),Object(D.a)(r),Object(D.a)(this.$.side.pipe((t=1,Object(C.a)((function(e,n){return t<=n}))))),Object(g.a)())})),"f"),b.pipe(Object(m.a)(t),Object(w.a)(e=>{this.updateDOM(...e);var{translateX:t,opacity:n}=this;this.fireEvent("move",{detail:{translateX:t,opacity:n},bubbles:!1})})).subscribe(),Object(d.a)(this.scrimEl,"click").pipe(Object(w.a)(()=>this.close())).subscribe(),n.pipe(Object(w.a)(e=>{this.scrimEl.style.display=e?"block":"none"})).subscribe(),this.$.mouseEvents.pipe(Object(X.a)(e=>e?r.pipe(Object(m.a)(s)):v.a),Object(C.a)(e=>{var[t,n]=e;return n&&null!=t.event}),Object(w.a)(e=>{var[{event:t}]=e;return t&&t.preventDefault()})).subscribe(),this.fireEvent("init",{detail:this.opened}),Object(i.e)(this,te,"f").resolve(this)},this.transitioned=e=>{this.opened=this.scrimClickable=e,this.willChange=!1,this.fireEvent("transitioned",{detail:e})}}get initialized(){return Object(i.e)(this,te,"f")}getDrawerWidth(){var e=A(this.contentEl).pipe(Object(w.a)(e=>this.fireEvent("content-width-change",{detail:e}))),t=A(this.peekEl).pipe(Object(w.a)(e=>this.fireEvent("peek-width-change",{detail:e})));return Object(p.a)([e,t]).pipe(Object(f.a)(e=>{var[t,n]=e;return t-n}),Object(g.a)())}connectedCallback(){super.connectedCallback(),this.$={opened:new O.a(this.opened),side:new O.a(this.side),persistent:new O.a(this.persistent),preventDefault:new O.a(this.noScroll),mouseEvents:new O.a(this.mouseEvents)},this.scrimClickable=this.opened,this.animateTo$=new j.a,this.updater=q.getUpdaterForPlatform(this),this.updateComplete.then(this.upgrade)}render(){return Object(r.d)(_||(_=se(['\n      <div class="peek full-height"></div>\n      <div\n        class="scrim"\n        style=',">\n      </div>\n      ","\n      <div\n        class=","\n        style=",'\n      >\n        <div class="overflow">\n          <slot></slot>\n        </div>\n      </div>\n    '])),b({willChange:this.willChange?"opacity":"",pointerEvents:this.scrimClickable?"all":""}),this.mouseEvents&&this.grabbing&&!this.scrimClickable?Object(r.d)(ee||(ee=se(['<div class="grabbing-screen full-screen"></div>']))):null,o({wrapper:!0,"full-height":!0,[this.side]:!0,grab:this.mouseEvents,grabbing:this.mouseEvents&&this.grabbing}),b({willChange:this.willChange?"transform":""}))}open(){this.animateTo$.next(!0)}close(){this.animateTo$.next(!1)}toggle(){this.animateTo$.next(!this.opened)}};te=new WeakMap,ne=new WeakMap,ie=new WeakMap,re=new WeakMap,ce.styles=ae,Object(i.g)([Object(r.f)(".scrim")],ce.prototype,"scrimEl",void 0),Object(i.g)([Object(r.f)(".wrapper")],ce.prototype,"contentEl",void 0),Object(i.g)([Object(r.f)(".peek")],ce.prototype,"peekEl",void 0),Object(i.g)([Object(r.e)({type:Boolean,reflect:!0})],ce.prototype,"opened",void 0),Object(i.g)([Object(r.e)({type:String,reflect:!0})],ce.prototype,"side",void 0),Object(i.g)([Object(r.e)({type:Boolean,reflect:!0})],ce.prototype,"persistent",void 0),Object(i.g)([Object(r.e)({type:Number,reflect:!0})],ce.prototype,"threshold",void 0),Object(i.g)([Object(r.e)({type:Boolean,reflect:!0})],ce.prototype,"noScroll",void 0),Object(i.g)([Object(r.e)({type:Boolean,reflect:!0})],ce.prototype,"mouseEvents",void 0),Object(i.g)([Object(r.e)({reflect:!0,converter:P,hasChanged:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:[];return e.length!==t.length||e.some((e,n)=>e!==t[n])}})],ce.prototype,"range",void 0),Object(i.g)([Object(r.e)()],ce.prototype,"scrimClickable",void 0),Object(i.g)([Object(r.e)()],ce.prototype,"grabbing",void 0),Object(i.g)([Object(r.e)()],ce.prototype,"willChange",void 0),Object(i.g)([Object(r.e)()],ce.prototype,"open",null),Object(i.g)([Object(r.e)()],ce.prototype,"close",null),Object(i.g)([Object(r.e)()],ce.prototype,"toggle",null),ce=Object(i.g)([Object(r.c)("hy-drawer")],ce)},223:function(e,t,n){"use strict";n.d(t,"a",(function(){return O}));var i=n(2),r=Array.isArray,a=Object.getPrototypeOf,s=Object.prototype,c=Object.keys;function o(e){if(1===e.length){var t=e[0];if(r(t))return{args:t,keys:null};if((i=t)&&"object"==typeof i&&a(i)===s){var n=c(t);return{args:n.map((function(e){return t[e]})),keys:n}}}var i;return{args:e,keys:null}}var l=n(43),b=n(20),h=n(101),p=n(28);function u(e,t){return e.reduce((function(e,n,i){return e[n]=t[i],e}),{})}var d=n(3),v=n(13);function O(){for(var e=[],t=0;t<arguments.length;t++)e[t]=arguments[t];var n=Object(p.c)(e),r=Object(p.b)(e),a=o(e),s=a.args,c=a.keys;if(0===s.length)return Object(l.a)([],n);var d=new i.a(j(s,n,c?function(e){return u(c,e)}:b.a));return r?d.pipe(Object(h.a)(r)):d}function j(e,t,n){return void 0===n&&(n=b.a),function(i){f(t,(function(){for(var r=e.length,a=new Array(r),s=r,c=r,o=function(r){f(t,(function(){var o=Object(l.a)(e[r],t),b=!1;o.subscribe(Object(d.a)(i,(function(e){a[r]=e,b||(b=!0,c--),c||i.next(n(a.slice()))}),(function(){--s||i.complete()})))}),i)},b=0;b<r;b++)o(b)}),i)}}function f(e,t,n){e?Object(v.a)(n,e,t):t()}},224:function(e,t,n){"use strict";n.d(t,"a",(function(){return o}));var i=n(84),r=n(4),a=n(3),s=n(5);var c=n(210);function o(e,t,n){void 0===t&&(t=i.b);var o=Object(c.a)(e,t);return function(e,t){return Object(r.a)((function(n,i){var r=null!=t?t:{},c=r.leading,o=void 0===c||c,l=r.trailing,b=void 0!==l&&l,h=!1,p=null,u=null,d=!1,v=function(){null==u||u.unsubscribe(),u=null,b&&(f(),d&&i.complete())},O=function(){u=null,d&&i.complete()},j=function(t){return u=Object(s.a)(e(t)).subscribe(Object(a.a)(i,v,O))},f=function(){if(h){h=!1;var e=p;p=null,i.next(e),!d&&j(e)}};n.subscribe(Object(a.a)(i,(function(e){h=!0,p=e,(!u||u.closed)&&(o?f():j(e))}),(function(){d=!0,(!(b&&h&&u)||u.closed)&&i.complete()})))}))}((function(){return o}),n)}}}]);
+
+
+
+
+
+
+
+
+
+
+
+
+var HyDrawer = class HyDrawer extends Object(_common__WEBPACK_IMPORTED_MODULE_8__["applyMixins"])(_hydecorp_component__WEBPACK_IMPORTED_MODULE_6__["RxLitElement"], [_observables__WEBPACK_IMPORTED_MODULE_9__["ObservablesMixin"], _update__WEBPACK_IMPORTED_MODULE_11__["UpdateMixin"], _calc__WEBPACK_IMPORTED_MODULE_10__["CalcMixin"]]) {
+  constructor() {
+    super(...arguments);
+    this.opened = false;
+    this.side = "left";
+    this.persistent = false;
+    this.threshold = 10;
+    this.noScroll = false;
+    this.mouseEvents = false;
+    // @property({ type: Boolean, reflect: true }) hashChange: boolean = false;
+    this.range = [0, 100];
+    this.willChange = false;
+    _HyDrawer_initialized.set(this, Object(_hydecorp_component__WEBPACK_IMPORTED_MODULE_6__["createResolvablePromise"])());
+    _HyDrawer_translateX$.set(this, void 0);
+    _HyDrawer_startTranslateX$.set(this, void 0);
+    _HyDrawer_tweenTranslateX$.set(this, void 0);
+    this.upgrade = () => {
+      var drawerWidth$ = this.getDrawerWidth();
+      var active$ = this.$.persistent.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(_ => !_));
+      var start$ = this.getStartObservable().pipe(
+      // takeUntil(this.subjects.disconnect),
+      Object(_common__WEBPACK_IMPORTED_MODULE_8__["filterWhen"])(active$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+      var isScrimVisible$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["defer"])(() => {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldGet"])(this, _HyDrawer_translateX$, "f").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(translateX => translateX !== 0));
+      });
+      var isInRange$ = start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["withLatestFrom"])(isScrimVisible$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(args => this.calcIsInRange(...args)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(inRange => {
+        if (inRange) {
+          this.willChange = true;
+          this.fireEvent('prepare');
+        }
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+      var end$ = this.getEndObservable().pipe(
+      // takeUntil(this.subjects.disconnect),
+      Object(_common__WEBPACK_IMPORTED_MODULE_8__["filterWhen"])(active$, isInRange$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(() => {
+        if (this.mouseEvents) this.grabbing = false;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+      var move$ = this.getMoveObservable(start$, end$).pipe(
+      // takeUntil(this.subjects.disconnect),
+      Object(_common__WEBPACK_IMPORTED_MODULE_8__["filterWhen"])(active$, isInRange$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+      var isSliding$ = this.getIsSlidingObservable(move$, start$, end$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(isSliding => {
+        this.isSliding = isSliding;
+        if (isSliding && this.mouseEvents) this.grabbing = true;
+        // if (isSliding) this.fireEvent('slidestart', { detail: this.opened });
+      }));
+      var translateX$ = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldSet"])(this, _HyDrawer_translateX$, Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["defer"])(() => {
+        var jumpTranslateX$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([this.$.opened, this.$.side, drawerWidth$]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(_ref => {
+          var [opened, side, drawerWidth] = _ref;
+          return !opened ? 0 : drawerWidth * (side === "left" ? 1 : -1);
+        }));
+        var moveTranslateX$ = move$.pipe(Object(_common__WEBPACK_IMPORTED_MODULE_8__["filterWhen"])(isSliding$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(() => this.scrimClickable = false), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(_ref2 => {
+          var {
+            event
+          } = _ref2;
+          return event && this.noScroll && event.preventDefault();
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["withLatestFrom"])(start$, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldGet"])(this, _HyDrawer_startTranslateX$, "f"), drawerWidth$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(args => this.calcTranslateX(...args)));
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"])(Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldGet"])(this, _HyDrawer_tweenTranslateX$, "f"), jumpTranslateX$, moveTranslateX$);
+      }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])()), "f");
+      Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldSet"])(this, _HyDrawer_startTranslateX$, translateX$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["sample"])(start$)), "f");
+      var velocity$ = translateX$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["timestamp"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["pairwise"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(_ref3 => {
+        var [{
+          timestamp: prevTime
+        }, {
+          timestamp: time
+        }] = _ref3;
+        return time - prevTime > 0;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(_ref4 => {
+        var [{
+          value: prevX,
+          timestamp: prevTime
+        }, {
+          value: x,
+          timestamp: time
+        }] = _ref4;
+        return (x - prevX) / (time - prevTime);
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["startWith"])(0));
+      var willOpen$ = end$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["withLatestFrom"])(start$, translateX$, drawerWidth$, velocity$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(args => this.calcIsSwipe(...args)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(args => this.calcWillOpen(...args)));
+      var animateTo$ = this.animateTo$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(() => {
+        this.willChange = true;
+        this.fireEvent('prepare');
+      }));
+      Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldSet"])(this, _HyDrawer_tweenTranslateX$, Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["merge"])(willOpen$, animateTo$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["withLatestFrom"])(translateX$, drawerWidth$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(_ref5 => {
+        var [willOpen, translateX, drawerWidth] = _ref5;
+        var inv = this.side === "left" ? 1 : -1;
+        var endTranslateX = willOpen ? drawerWidth * inv : 0;
+        var diffTranslateX = endTranslateX - translateX;
+        var duration = Math.ceil(_constants__WEBPACK_IMPORTED_MODULE_7__["BASE_DURATION"] + drawerWidth * _constants__WEBPACK_IMPORTED_MODULE_7__["WIDTH_CONTRIBUTION"]);
+        return Object(_common__WEBPACK_IMPORTED_MODULE_8__["tween"])(_common__WEBPACK_IMPORTED_MODULE_8__["easeOutSine"], translateX, diffTranslateX, duration).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(() => {
+          this.transitioned(willOpen);
+        }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(start$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["takeUntil"])(this.$.side.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["skip"])(1))), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+      })), "f");
+      translateX$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["withLatestFrom"])(drawerWidth$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(args => {
+        this.updateDOM(...args);
+        var {
+          translateX,
+          opacity
+        } = this;
+        this.fireEvent('move', {
+          detail: {
+            translateX,
+            opacity
+          },
+          bubbles: false
+        });
+      })).subscribe();
+      Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["fromEvent"])(this.scrimEl, "click").pipe(
+      // takeUntil(this.subjects.disconnect),
+      Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(() => this.close())).subscribe();
+      active$.pipe(
+      // takeUntil(this.subjects.disconnect),
+      Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(active => {
+        this.scrimEl.style.display = active ? "block" : "none";
+      })).subscribe();
+      this.$.mouseEvents.pipe(
+      // takeUntil(this.subjects.disconnect),
+      Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(mouseEvents => {
+        return mouseEvents ? start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["withLatestFrom"])(isInRange$)) : rxjs__WEBPACK_IMPORTED_MODULE_4__["NEVER"];
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["filter"])(_ref6 => {
+        var [coord, isInRange] = _ref6;
+        return isInRange && coord.event != null;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(_ref7 => {
+        var [{
+          event
+        }] = _ref7;
+        return event && event.preventDefault();
+      })).subscribe();
+      // fromEvent(window, 'hashchange').pipe(
+      //   // takeUntil(this.subjects.disconnect),
+      //   subscribeWhen(this.$.hashChange),
+      //   tap(() => {
+      //     const opened = location.hash === this.hashId;
+      //     if (!history.state && opened) {
+      //       history.replaceState({ [this.histId]: { backable: true } }, document.title)
+      //     }
+      //     // If the state doesn't match open/close the drawer
+      //     if (opened !== this.opened) this.animateTo$.next(opened);
+      //   }),
+      // ).subscribe();
+      this.fireEvent("init", {
+        detail: this.opened
+      });
+      Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldGet"])(this, _HyDrawer_initialized, "f").resolve(this);
+    };
+    this.transitioned = hasOpened => {
+      this.opened = this.scrimClickable = hasOpened;
+      this.willChange = false;
+      // if (this.hashChange) this.transitionedHash(hasOpened)
+      this.fireEvent('transitioned', {
+        detail: hasOpened
+      });
+    };
+  }
+  get initialized() {
+    return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__classPrivateFieldGet"])(this, _HyDrawer_initialized, "f");
+  }
+  // HyDrawer
+  getDrawerWidth() {
+    var content$ = Object(_common__WEBPACK_IMPORTED_MODULE_8__["observeWidth"])(this.contentEl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(px => this.fireEvent('content-width-change', {
+      detail: px
+    })));
+    var peek$ = Object(_common__WEBPACK_IMPORTED_MODULE_8__["observeWidth"])(this.peekEl).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(px => this.fireEvent('peek-width-change', {
+      detail: px
+    })));
+    return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["combineLatest"])([content$, peek$]).pipe(
+    // takeUntil(this.subjects.disconnect),
+    Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(_ref8 => {
+      var [contentWidth, peekWidth] = _ref8;
+      return contentWidth - peekWidth;
+    }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+  }
+  // private consolidateState() {
+  //   const hashOpened = location.hash === this.hashId;
+  //   const isReload = history.state && history.state[this.histId];
+  //   if (isReload) {
+  //     if (hashOpened !== this.opened) {
+  //       this.opened = hashOpened;
+  //     }
+  //   } else {
+  //     const url = new URL(location.href);
+  //     const newState = { ...history.state, [this.histId]: { backable: false } };
+  //     if (hashOpened && !this.opened) {
+  //       url.hash = '';
+  //       history.replaceState(newState, document.title, url.href);
+  //       url.hash = this.hashId;
+  //       history.pushState({ [this.histId]: { backable: true } }, document.title, url.href);
+  //       this.opened = true;
+  //     }
+  //     else if (!hashOpened && this.opened) {
+  //       history.replaceState(newState, document.title, url.href);
+  //       url.hash = this.hashId;
+  //       history.pushState({ [this.histId]: { backable: true } }, document.title, url.href);
+  //     }
+  //     else {
+  //       history.replaceState(newState, document.title, url.href);
+  //     }
+  //   }
+  // }
+  connectedCallback() {
+    super.connectedCallback();
+    // if (this.hashChange) this.consolidateState()
+    this.$ = {
+      opened: new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.opened),
+      side: new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.side),
+      persistent: new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.persistent),
+      preventDefault: new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.noScroll),
+      mouseEvents: new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](this.mouseEvents)
+      // hashChange: new BehaviorSubject(this.hashChange),
+    };
+    this.scrimClickable = this.opened;
+    this.animateTo$ = new rxjs__WEBPACK_IMPORTED_MODULE_4__["Subject"]();
+    this.updater = _update__WEBPACK_IMPORTED_MODULE_11__["DOMUpdater"].getUpdaterForPlatform(this);
+    this.updateComplete.then(this.upgrade);
+  }
+  // private transitionedHash(hasOpened: boolean) {
+  //   const hasClosed = !hasOpened;
+  //   const { backable } = history.state && history.state[this.histId] || { backable: false }
+  //   if (hasClosed && backable) {
+  //     history.back()
+  //   } 
+  //   if (hasOpened && location.hash !== this.hashId) {
+  //     location.hash = this.hashId;
+  //   }
+  // }
+  render() {
+    return Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["html"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n      <div class=\"peek full-height\"></div>\n      <div\n        class=\"scrim\"\n        style=", ">\n      </div>\n      ", "\n      <div\n        class=", "\n        style=", "\n      >\n        <div class=\"overflow\">\n          <slot></slot>\n        </div>\n      </div>\n    "])), Object(lit_html_directives_style_map__WEBPACK_IMPORTED_MODULE_3__["styleMap"])({
+      willChange: this.willChange ? 'opacity' : '',
+      pointerEvents: this.scrimClickable ? 'all' : ''
+    }), this.mouseEvents && this.grabbing && !this.scrimClickable ? Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["html"])(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["<div class=\"grabbing-screen full-screen\"></div>"]))) : null, Object(lit_html_directives_class_map__WEBPACK_IMPORTED_MODULE_2__["classMap"])({
+      wrapper: true,
+      'full-height': true,
+      [this.side]: true,
+      grab: this.mouseEvents,
+      grabbing: this.mouseEvents && this.grabbing
+    }), Object(lit_html_directives_style_map__WEBPACK_IMPORTED_MODULE_3__["styleMap"])({
+      willChange: this.willChange ? 'transform' : ''
+    }));
+  }
+  open() {
+    this.animateTo$.next(true);
+  }
+  close() {
+    this.animateTo$.next(false);
+  }
+  toggle() {
+    this.animateTo$.next(!this.opened);
+  }
+};
+_HyDrawer_initialized = new WeakMap(), _HyDrawer_translateX$ = new WeakMap(), _HyDrawer_startTranslateX$ = new WeakMap(), _HyDrawer_tweenTranslateX$ = new WeakMap();
+HyDrawer.styles = _styles__WEBPACK_IMPORTED_MODULE_12__["styles"];
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["query"])('.scrim')], HyDrawer.prototype, "scrimEl", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["query"])('.wrapper')], HyDrawer.prototype, "contentEl", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["query"])('.peek')], HyDrawer.prototype, "peekEl", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  type: Boolean,
+  reflect: true
+})], HyDrawer.prototype, "opened", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  type: String,
+  reflect: true
+})], HyDrawer.prototype, "side", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  type: Boolean,
+  reflect: true
+})], HyDrawer.prototype, "persistent", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  type: Number,
+  reflect: true
+})], HyDrawer.prototype, "threshold", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  type: Boolean,
+  reflect: true
+})], HyDrawer.prototype, "noScroll", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  type: Boolean,
+  reflect: true
+})], HyDrawer.prototype, "mouseEvents", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])({
+  reflect: true,
+  converter: _common__WEBPACK_IMPORTED_MODULE_8__["rangeConverter"],
+  hasChanged: _common__WEBPACK_IMPORTED_MODULE_8__["rangeHasChanged"]
+})], HyDrawer.prototype, "range", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])()], HyDrawer.prototype, "scrimClickable", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])()], HyDrawer.prototype, "grabbing", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])()], HyDrawer.prototype, "willChange", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])()], HyDrawer.prototype, "open", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])()], HyDrawer.prototype, "close", null);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["property"])()], HyDrawer.prototype, "toggle", null);
+HyDrawer = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(lit_element__WEBPACK_IMPORTED_MODULE_1__["customElement"])('hy-drawer')], HyDrawer);
+
+
+/***/ }),
+
+/***/ "./node_modules/@hydecorp/drawer/lib/observables.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/observables.js ***!
+  \**********************************************************/
+/*! exports provided: ObservablesMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ObservablesMixin", function() { return ObservablesMixin; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "./node_modules/@hydecorp/drawer/lib/common.js");
+
+
+
+var abs = Math.abs.bind(Math);
+class ObservablesMixin {
+  getStartObservable() {
+    return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["combineLatest"])([this.$.mouseEvents]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref => {
+      var [mouseEvents] = _ref;
+      var touchstart$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(document, "touchstart", {
+        passive: true
+      }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(_ref2 => {
+        var {
+          touches
+        } = _ref2;
+        return touches.length === 1;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref3 => {
+        var {
+          touches
+        } = _ref3;
+        return touches[0];
+      }));
+      var mousedown$ = !mouseEvents ? rxjs__WEBPACK_IMPORTED_MODULE_0__["NEVER"] : Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(document, "mousedown").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(e => (e.event = e, e)));
+      return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["merge"])(touchstart$, mousedown$);
+    }));
+  }
+  getMoveObservable(start$, end$) {
+    return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["combineLatest"])([this.$.mouseEvents, this.$.preventDefault]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref4 => {
+      var [mouseEvents, preventDefault] = _ref4;
+      var touchmove$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(document, "touchmove", {
+        passive: !preventDefault
+      }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(e => (e.touches[0].event = e, e.touches[0])));
+      var mousemove$ = !mouseEvents ? rxjs__WEBPACK_IMPORTED_MODULE_0__["NEVER"] : Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(document, "mousemove", {
+        passive: !preventDefault
+      }).pipe(Object(_common__WEBPACK_IMPORTED_MODULE_2__["subscribeWhen"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["merge"])(start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mapTo"])(true)), end$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mapTo"])(false)))), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(e => (e.event = e, e)));
+      return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["merge"])(touchmove$, mousemove$);
+    }));
+  }
+  getEndObservable() {
+    return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["combineLatest"])([this.$.mouseEvents]).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref5 => {
+      var [mouseEvents] = _ref5;
+      var touchend$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(document, "touchend", {
+        passive: true
+      }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(_ref6 => {
+        var {
+          touches
+        } = _ref6;
+        return touches.length === 0;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(event => event.changedTouches[0]));
+      var mouseup$ = !mouseEvents ? rxjs__WEBPACK_IMPORTED_MODULE_0__["NEVER"] : Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(document, "mouseup", {
+        passive: true
+      }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(e => (e.event = e, e)));
+      return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["merge"])(touchend$, mouseup$);
+    }));
+  }
+  getIsSlidingObservable(move$, start$, end$) {
+    return this.getIsSlidingObservableInner(move$, start$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["startWith"])(undefined), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["repeatWhen"])(() => end$));
+  }
+  getIsSlidingObservableInner(move$, start$) {
+    if (this.threshold) {
+      return move$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["withLatestFrom"])(start$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["skipWhile"])(_ref7 => {
+        var [{
+          clientX,
+          clientY
+        }, {
+          clientX: startX,
+          clientY: startY
+        }] = _ref7;
+        return abs(startY - clientY) < this.threshold && abs(startX - clientX) < this.threshold;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref8 => {
+        var [{
+          clientX,
+          clientY
+        }, {
+          clientX: startX,
+          clientY: startY
+        }] = _ref8;
+        return abs(startX - clientX) >= abs(startY - clientY);
+      }));
+    } else {
+      return move$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["withLatestFrom"])(start$), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref9 => {
+        var [{
+          clientX,
+          clientY,
+          event
+        }, {
+          clientX: startX,
+          clientY: startY
+        }] = _ref9;
+        var isSliding = abs(startX - clientX) >= abs(startY - clientY);
+        if (this.noScroll && isSliding && event) event.preventDefault();
+        return isSliding;
+      }));
+    }
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/@hydecorp/drawer/lib/styles.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/styles.js ***!
+  \*****************************************************/
+/*! exports provided: styles */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styles", function() { return styles; });
+/* harmony import */ var lit_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-element */ "./node_modules/lit-element/lit-element.js");
+var _templateObject;
+function _taggedTemplateLiteral(e, t) { return t || (t = e.slice(0)), Object.freeze(Object.defineProperties(e, { raw: { value: Object.freeze(t) } })); }
+
+var styles = Object(lit_element__WEBPACK_IMPORTED_MODULE_0__["css"])(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  @media screen {\n    :host {\n      touch-action: pan-x;\n    }\n\n    .full-screen {\n      position: fixed;\n      top: 0;\n      left: 0;\n      height: 100vh;\n      width: 100vw;\n    }\n\n    .full-height {\n      position: fixed;\n      top: 0;\n      height: 100vh;\n    }\n\n    .peek {\n      left: 0;\n      width: var(--hy-drawer-peek-width, 0px);\n      visibility: hidden;\n      z-index: calc(var(--hy-drawer-z-index, 100) - 1);\n    }\n\n    .scrim {\n      position: fixed;\n      top: 0;\n      left: 0;\n      height: 10vh;\n      width: 10vw;\n      transform: scale(10);\n      transform-origin: top left;\n      opacity: 0;\n      pointer-events: none;\n      background: var(--hy-drawer-scrim-background, rgba(0, 0, 0, 0.5));\n      z-index: var(--hy-drawer-z-index, 100);\n      -webkit-tap-highlight-color: transparent;\n    }\n\n    .range {\n      position: fixed;\n      top: 0;\n      height: 100vh;\n      z-index: calc(var(--hy-drawer-z-index, 100) + 1);\n    }\n\n    .grabbing-screen {\n      cursor: grabbing;\n      z-index: calc(var(--hy-drawer-z-index, 100) + 2);\n    }\n\n    .wrapper {\n      width: var(--hy-drawer-width, 300px);\n      background: var(--hy-drawer-background, inherit);\n      box-shadow: var(--hy-drawer-box-shadow, 0 0 15px rgba(0, 0, 0, 0.25));\n      z-index: calc(var(--hy-drawer-z-index, 100) + 3);\n      contain: strict;\n    }\n\n    .wrapper.left {\n      left:  calc(-1 * var(--hy-drawer-width, 300px) + var(--hy-drawer-peek-width, 0px));\n    }\n\n    .wrapper.right {\n      right:  calc(-1 * var(--hy-drawer-width, 300px) + var(--hy-drawer-peek-width, 0px));\n    }\n\n    .wrapper > .overflow {\n      position: absolute;\n      top: 0;\n      right: 0;\n      bottom: 0;\n      left: 0;\n      overflow-x: hidden;\n      overflow-y: auto;\n      overscroll-behavior: contain;\n      -webkit-overflow-scrolling: touch;\n    }\n\n    .grab {\n      cursor: move;\n      cursor: grab;\n    }\n\n    .grabbing {\n      cursor: grabbing;\n    }\n  }\n\n  @media print {\n    .scrim {\n      display: none !important;\n    }\n\n    .wrapper {\n      transform: none !important;\n    }\n  }\n"])));
+
+/***/ }),
+
+/***/ "./node_modules/@hydecorp/drawer/lib/update.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@hydecorp/drawer/lib/update.js ***!
+  \*****************************************************/
+/*! exports provided: UpdateMixin, DOMUpdater, StyleUpdater, AttributeStyleMapUpdater */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UpdateMixin", function() { return UpdateMixin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DOMUpdater", function() { return DOMUpdater; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StyleUpdater", function() { return StyleUpdater; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AttributeStyleMapUpdater", function() { return AttributeStyleMapUpdater; });
+class UpdateMixin {
+  updateDOM(translateX, drawerWidth) {
+    var inv = this.side === "left" ? 1 : -1;
+    var opacity = translateX / drawerWidth * inv || 0;
+    this.translateX = translateX;
+    this.opacity = opacity;
+    this.updater.updateDOM(translateX, opacity);
+  }
+}
+class DOMUpdater {
+  constructor(parent) {
+    this.parent = parent;
+  }
+  static getUpdaterForPlatform(parent) {
+    var hasCSSOM = "attributeStyleMap" in Element.prototype && "CSS" in window && "number" in CSS;
+    return hasCSSOM ? new AttributeStyleMapUpdater(parent) : new StyleUpdater(parent);
+  }
+  get contentEl() {
+    return this.parent.contentEl;
+  }
+  get scrimEl() {
+    return this.parent.scrimEl;
+  }
+}
+class StyleUpdater extends DOMUpdater {
+  constructor(parent) {
+    super(parent);
+  }
+  updateDOM(translateX, opacity) {
+    this.contentEl.style.transform = "translate(".concat(translateX, "px, 0px)");
+    this.scrimEl.style.opacity = "".concat(opacity);
+  }
+}
+class AttributeStyleMapUpdater extends DOMUpdater {
+  constructor(parent) {
+    super(parent);
+    this.tvalue = new CSSTransformValue([new CSSTranslate(CSS.px(0), CSS.px(0))]);
+    this.ovalue = CSS.number(1);
+  }
+  updateDOM(translateX, opacity) {
+    this.tvalue[0].x.value = translateX;
+    this.ovalue.value = opacity;
+    this.contentEl.attributeStyleMap.set("transform", this.tvalue);
+    this.scrimEl.attributeStyleMap.set("opacity", this.ovalue);
+  }
+}
+
+/***/ }),
+
+/***/ "./node_modules/lit-html/directives/class-map.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/lit-html/directives/class-map.js ***!
+  \*******************************************************/
+/*! exports provided: classMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "classMap", function() { return classMap; });
+/* harmony import */ var _lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lit-html.js */ "./node_modules/lit-html/lit-html.js");
+/**
+ * @license
+ * Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at
+ * http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at
+ * http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at
+ * http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at
+ * http://polymer.github.io/PATENTS.txt
+ */
+
+// IE11 doesn't support classList on SVG elements, so we emulate it with a Set
+class ClassList {
+  constructor(element) {
+    this.classes = new Set();
+    this.changed = false;
+    this.element = element;
+    var classList = (element.getAttribute('class') || '').split(/\s+/);
+    for (var cls of classList) {
+      this.classes.add(cls);
+    }
+  }
+  add(cls) {
+    this.classes.add(cls);
+    this.changed = true;
+  }
+  remove(cls) {
+    this.classes.delete(cls);
+    this.changed = true;
+  }
+  commit() {
+    if (this.changed) {
+      var classString = '';
+      this.classes.forEach(cls => classString += cls + ' ');
+      this.element.setAttribute('class', classString);
+    }
+  }
+}
+/**
+ * Stores the ClassInfo object applied to a given AttributePart.
+ * Used to unset existing values when a new ClassInfo object is applied.
+ */
+var previousClassesCache = new WeakMap();
+/**
+ * A directive that applies CSS classes. This must be used in the `class`
+ * attribute and must be the only part used in the attribute. It takes each
+ * property in the `classInfo` argument and adds the property name to the
+ * element's `class` if the property value is truthy; if the property value is
+ * falsey, the property name is removed from the element's `class`. For example
+ * `{foo: bar}` applies the class `foo` if the value of `bar` is truthy.
+ * @param classInfo {ClassInfo}
+ */
+var classMap = Object(_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["directive"])(classInfo => part => {
+  if (!(part instanceof _lit_html_js__WEBPACK_IMPORTED_MODULE_0__["AttributePart"]) || part instanceof _lit_html_js__WEBPACK_IMPORTED_MODULE_0__["PropertyPart"] || part.committer.name !== 'class' || part.committer.parts.length > 1) {
+    throw new Error('The `classMap` directive must be used in the `class` attribute ' + 'and must be the only part in the attribute.');
+  }
+  var {
+    committer
+  } = part;
+  var {
+    element
+  } = committer;
+  var previousClasses = previousClassesCache.get(part);
+  if (previousClasses === undefined) {
+    // Write static classes once
+    // Use setAttribute() because className isn't a string on SVG elements
+    element.setAttribute('class', committer.strings.join(' '));
+    previousClassesCache.set(part, previousClasses = new Set());
+  }
+  var classList = element.classList || new ClassList(element);
+  // Remove old classes that no longer apply
+  // We use forEach() instead of for-of so that re don't require down-level
+  // iteration.
+  previousClasses.forEach(name => {
+    if (!(name in classInfo)) {
+      classList.remove(name);
+      previousClasses.delete(name);
+    }
+  });
+  // Add or remove classes based on their classMap value
+  for (var name in classInfo) {
+    var value = classInfo[name];
+    if (value != previousClasses.has(name)) {
+      // We explicitly want a loose truthy check of `value` because it seems
+      // more convenient that '' and 0 are skipped.
+      if (value) {
+        classList.add(name);
+        previousClasses.add(name);
+      } else {
+        classList.remove(name);
+        previousClasses.delete(name);
+      }
+    }
+  }
+  if (typeof classList.commit === 'function') {
+    classList.commit();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/lit-html/directives/style-map.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/lit-html/directives/style-map.js ***!
+  \*******************************************************/
+/*! exports provided: styleMap */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "styleMap", function() { return styleMap; });
+/* harmony import */ var _lit_html_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../lit-html.js */ "./node_modules/lit-html/lit-html.js");
+/**
+ * @license
+ * Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at
+ * http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at
+ * http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at
+ * http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at
+ * http://polymer.github.io/PATENTS.txt
+ */
+
+/**
+ * Stores the StyleInfo object applied to a given AttributePart.
+ * Used to unset existing values when a new StyleInfo object is applied.
+ */
+var previousStylePropertyCache = new WeakMap();
+/**
+ * A directive that applies CSS properties to an element.
+ *
+ * `styleMap` can only be used in the `style` attribute and must be the only
+ * expression in the attribute. It takes the property names in the `styleInfo`
+ * object and adds the property values as CSS properties. Property names with
+ * dashes (`-`) are assumed to be valid CSS property names and set on the
+ * element's style object using `setProperty()`. Names without dashes are
+ * assumed to be camelCased JavaScript property names and set on the element's
+ * style object using property assignment, allowing the style object to
+ * translate JavaScript-style names to CSS property names.
+ *
+ * For example `styleMap({backgroundColor: 'red', 'border-top': '5px', '--size':
+ * '0'})` sets the `background-color`, `border-top` and `--size` properties.
+ *
+ * @param styleInfo {StyleInfo}
+ */
+var styleMap = Object(_lit_html_js__WEBPACK_IMPORTED_MODULE_0__["directive"])(styleInfo => part => {
+  if (!(part instanceof _lit_html_js__WEBPACK_IMPORTED_MODULE_0__["AttributePart"]) || part instanceof _lit_html_js__WEBPACK_IMPORTED_MODULE_0__["PropertyPart"] || part.committer.name !== 'style' || part.committer.parts.length > 1) {
+    throw new Error('The `styleMap` directive must be used in the style attribute ' + 'and must be the only part in the attribute.');
+  }
+  var {
+    committer
+  } = part;
+  var {
+    style
+  } = committer.element;
+  var previousStyleProperties = previousStylePropertyCache.get(part);
+  if (previousStyleProperties === undefined) {
+    // Write static styles once
+    style.cssText = committer.strings.join(' ');
+    previousStylePropertyCache.set(part, previousStyleProperties = new Set());
+  }
+  // Remove old properties that no longer exist in styleInfo
+  // We use forEach() instead of for-of so that re don't require down-level
+  // iteration.
+  previousStyleProperties.forEach(name => {
+    if (!(name in styleInfo)) {
+      previousStyleProperties.delete(name);
+      if (name.indexOf('-') === -1) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        style[name] = null;
+      } else {
+        style.removeProperty(name);
+      }
+    }
+  });
+  // Add or update properties
+  for (var name in styleInfo) {
+    previousStyleProperties.add(name);
+    if (name.indexOf('-') === -1) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      style[name] = styleInfo[name];
+    } else {
+      style.setProperty(name, styleInfo[name]);
+    }
+  }
+});
+
+/***/ })
+
+}]);
+//# sourceMappingURL=vendors~drawer-hydejack-9.2.1.js.map

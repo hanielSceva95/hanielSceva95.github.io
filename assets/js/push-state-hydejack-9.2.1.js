@@ -1,14 +1,536 @@
-/*!
- *  __  __                __                                     __
- * /\ \/\ \              /\ \             __                    /\ \
- * \ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
- *  \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
- *   \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
- *    \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
- *     \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
- *                 /\___/                \ \____/
- *                 \/__/                  \/___/
- *
- * Powered by Hydejack v9.2.1 <https://hydejack.com/>
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["push-state"],{
+
+/***/ "./_js/src/cross-fader.js":
+/*!********************************!*\
+  !*** ./_js/src/cross-fader.js ***!
+  \********************************/
+/*! exports provided: CrossFader */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CrossFader", function() { return CrossFader; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "./_js/src/common.js");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+// Copyright (c) 2019 Florian Klampfer <https://qwtel.com/>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+
+var RE_CSS_URL = /url[\t-\r \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]*\(["']?(((?:[\0-!#-&\(-\[\]-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])|\\(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]))*)["']?\)/;
+
+/** @param {Document} doc */
+var calcHash = doc => {
+  var _pageStyle$innerText;
+  var sidebar = doc.getElementById('_sidebar');
+  var sidebarBg = sidebar === null || sidebar === void 0 ? void 0 : sidebar.querySelector('.sidebar-bg');
+  var pageStyle = doc.getElementById('_pageStyle');
+  // const rule = Array.from(pageStyle?.sheet?.rules ?? []).find(r => r.selectorText === 'html');
+  // const accentColor = rule?.style.getPropertyValue('--accent-color') ?? '';
+  // const themeColor = rule?.style.getPropertyValue('--theme-color') ?? '';
+  return [pageStyle === null || pageStyle === void 0 || (_pageStyle$innerText = pageStyle.innerText) === null || _pageStyle$innerText === void 0 ? void 0 : _pageStyle$innerText.trim(), sidebar === null || sidebar === void 0 ? void 0 : sidebar.classList, sidebarBg === null || sidebarBg === void 0 ? void 0 : sidebarBg.classList, sidebarBg === null || sidebarBg === void 0 ? void 0 : sidebarBg.style.backgroundImage].join('\n');
+};
+
+/**
+ * Consider a URL external if either the protocol, hostname or port is different.
+ * @param {URL} param0
+ * @param {Location=} location
  */
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{167:function(e,t,r){"use strict";r.r(t);var n=r(172),a=r(195),i=r(218),o=r(210),l=r(193),c=r(24),u=r(192),s=r(108),p=r(219),b=r(105),d=r(215),v=r(194),y=r(196),f=r(27),m=r(7),O=r(79),j=r(179),h=r(217),g=r(214);function w(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n)}return r}function F(e,t,r){return(t=function(e){var t=function(e,t){if("object"!=typeof e||!e)return e;var r=e[Symbol.toPrimitive];if(void 0!==r){var n=r.call(e,t||"default");if("object"!=typeof n)return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==typeof t?t:t+""}(t))in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}var D=/url[\t-\r \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]*\(["']?(((?:[\0-!#-&\(-\[\]-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF])|\\(?:[\0-\t\x0B\f\x0E-\u2027\u202A-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]))*)["']?\)/,E=e=>{var t,r=e.getElementById("_sidebar"),n=null==r?void 0:r.querySelector(".sidebar-bg"),a=e.getElementById("_pageStyle");return[null==a||null===(t=a.innerText)||void 0===t?void 0:t.trim(),null==r?void 0:r.classList,null==n?void 0:n.classList,null==n?void 0:n.style.backgroundImage].join("\n")};var S=new WeakMap;class P{constructor(e){this.sidebar=document.getElementById("_sidebar"),this.fadeDuration=e,this.prevHash=E(document),this.themeColorEl=document.querySelector('meta[name="theme-color"]')}fetchImage2(e){var t,r,{backgroundImage:n=""}=null!==(t=null===(r=e.querySelector(".sidebar-bg"))||void 0===r?void 0:r.style)&&void 0!==t?t:{},a=D.exec(n);if(!a)return Object(O.a)("");var i=new URL(a[1],window.location.origin);return Object(m.e)(i.href,function(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?w(Object(r),!0).forEach((function(t){F(e,t,r[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):w(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t))}))}return e}({method:"GET",headers:{Accept:"image/*"}},function(e){var{protocol:t,host:r}=e,n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:window.location;return t!==n.protocol||r!==n.host}(i)?{mode:"cors"}:{})).pipe(Object(b.a)(e=>e.blob()),Object(c.a)(e=>URL.createObjectURL(e)),Object(h.a)(()=>Object(O.a)(i.href)))}fetchImage(e){var t=E(e);return t===this.prevHash?j.a:this.fetchImage2(e).pipe(Object(c.a)(r=>{var n,a=null!==(n=e.querySelector(".sidebar-bg"))&&void 0!==n?n:document.createElement("div");return r&&(a.style.backgroundImage="url(".concat(r,")"),S.set(a,r)),[a,t,e]}))}updateStyle(e){var t,r=null===(t=e.getElementById("_sidebar"))||void 0===t?void 0:t.classList;if(r&&this.sidebar.setAttribute("class",r),this.themeColorEl){var n,a=null===(n=e.head.querySelector('meta[name="theme-color"]'))||void 0===n?void 0:n.content;a&&window.setTimeout(()=>{this.themeColorEl&&(this.themeColorEl.content=a)},250)}try{var i,o=document.getElementById("_pageStyle"),l=e.getElementById("_pageStyle");if(!l)return;null==o||null===(i=o.parentNode)||void 0===i||i.replaceChild(l,o)}catch(e){0}}fade(e,t){var r,[n]=e,[a,i,o]=t;return null==n||null===(r=n.parentNode)||void 0===r||r.insertBefore(a,n.nextElementSibling),this.updateStyle(o),this.prevHash=i,Object(m.c)(a,[{opacity:0},{opacity:1}],{duration:this.fadeDuration,easing:"ease"}).pipe(Object(g.a)(()=>{var e;S.has(n)&&URL.revokeObjectURL(S.get(n)),null==n||null===(e=n.parentNode)||void 0===e||e.removeChild(n)}))}}var C=r(104);var B,I=["title"];function q(e,t,r,n){var o=e.pipe(Object(C.a)(e=>{var{flipType:t}=e;return!I.includes(t)}));return Object(a.a)(function(e,t,r,n){var{animationMain:a,settings:o}=n;if(!a)return e;var l=e.pipe(Object(C.a)(e=>{var{flipType:t}=e;return"title"===t}),Object(b.a)(e=>{var{anchor:t}=e;if(!t)return Object(O.a)({});var r=document.createElement("h1");r.classList.add("page-title"),r.textContent=t.textContent,r.style.transformOrigin="left top";var n=a.querySelector(".page");if(!n)return Object(O.a)({});m.d.call(n),n.appendChild(r),a.style.position="fixed",a.style.opacity=1;var i=t.getBoundingClientRect(),l=r.getBoundingClientRect(),c=parseInt(getComputedStyle(t).fontSize,10),u=parseInt(getComputedStyle(r).fontSize,10),p=i.left-l.left,b=i.top-l.top,d=c/u;t.style.opacity=0;var v=[{transform:"translate3d(".concat(p,"px, ").concat(b,"px, 0) scale(").concat(d,")")},{transform:"translate3d(0, 0, 0) scale(1)"}];return Object(m.c)(r,v,o).pipe(Object(s.a)({complete(){a.style.position="absolute"}}))}));return e.pipe(Object(b.a)(e=>{var{flipType:n}=e;return Object(i.a)(t.pipe(Object(C.a)(()=>"title"===n),Object(c.a)(e=>{var{replaceEls:[t]}=e,r=t.querySelector(".page-title, .post-title");return r&&(r.style.opacity=0),r})),r).pipe(Object(c.a)(e=>{var[t]=e;return t}),Object(s.a)(e=>{e&&(e.style.opacity=1),a.style.opacity=0}),Object(g.a)(()=>{a.style.opacity=0;var e=a.querySelector(".page");m.d.call(e)}))})).subscribe(),l}(e,t,r,n),o)}function x(e,t){var r=Object.keys(e);if(Object.getOwnPropertySymbols){var n=Object.getOwnPropertySymbols(e);t&&(n=n.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),r.push.apply(r,n)}return r}function _(e){for(var t=1;t<arguments.length;t++){var r=null!=arguments[t]?arguments[t]:{};t%2?x(Object(r),!0).forEach((function(t){L(e,t,r[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(r)):x(Object(r)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(r,t))}))}return e}function L(e,t,r){return(t=function(e){var t=function(e,t){if("object"!=typeof e||!e)return e;var r=e[Symbol.toPrimitive];if(void 0!==r){var n=r.call(e,t||"default");if("object"!=typeof n)return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===t?String:Number)(e)}(e,"string");return"symbol"==typeof t?t:t+""}(t))in e?Object.defineProperty(e,t,{value:r,enumerable:!0,configurable:!0,writable:!0}):e[t]=r,e}function k(e,t,r,n,a,i,o){try{var l=e[i](o),c=l.value}catch(e){return void r(e)}l.done?t(c):Promise.resolve(c).then(n,a)}(B=function*(){yield Promise.all([..."fetch"in window?[]:[Promise.all([r.e(11),r.e(3)]).then(r.bind(null,222))],..."customElements"in window?[]:[r.e(16).then(r.bind(null,190))],..."animate"in Element.prototype?[]:[r.e(15).then(r.t.bind(null,220,7))],..."IntersectionObserver"in window?[]:[r.e(12).then(r.t.bind(null,221,7))]]),yield m.t;var e=[{opacity:1},{opacity:0}],t=[{opacity:0,transform:"translateY(-3rem)"},{opacity:1,transform:"translateY(0)"}],O=document.querySelector("hy-push-state");if(O){var j=Number(O.getAttribute("duration"))||350,h={duration:j,easing:"ease"},g=document.querySelector("hy-drawer"),w=document.querySelector("#_navbar > .content > .nav-btn-bar"),F=function(e){var t;return null==e||null===(t=e.parentNode)||void 0===t||t.insertBefore(Object(m.l)("_animation-template"),e),null==e?void 0:e.previousElementSibling}(O),D=function(e){return null==e||e.appendChild(Object(m.l)("_loading-template")),null==e?void 0:e.lastElementChild}(w),E=(e,t)=>Object(n.a)(O,e).pipe(Object(c.a)(e=>{var{detail:t}=e;return t}),t?Object(c.a)(t):e=>e,Object(u.a)()),S=E("hy-push-state-start",e=>{return Object.assign(e,{flipType:(t=e.anchor,null!=t&&t.classList.contains("flip-title")?"title":null!=t&&t.classList.contains("flip-project")?"project":null==t||null===(r=t.getAttribute)||void 0===r?void 0:r.call(t,"data-flip"))});var t,r}),C=E("hy-push-state-ready"),B=E("hy-push-state-after"),I=E("hy-push-state-progress"),x=E("hy-push-state-networkerror"),L=S.pipe(Object(c.a)(e=>Object.assign(e,{main:document.getElementById("_main")})),Object(s.a)(e=>{var{main:t}=e;t.style.pointerEvents="none"}),window._noDrawer&&null!=g&&g.classList.contains("cover")?Object(s.a)(()=>{var e;g.classList.remove("cover"),null===(e=g.parentNode)||void 0===e||e.appendChild(g)}):e=>e,Object(p.a)(t=>{var{main:r}=t;return Object(m.c)(r,e,_(_({},h),{},{fill:"forwards"})).pipe(Object(l.a)({main:r}))}),Object(s.a)(e=>{var{main:t}=e;return m.d.call(t)}),Object(u.a)());D&&(I.subscribe(()=>{D.style.display="flex"}),C.subscribe(()=>{D.style.display="none"}));var k=B.pipe(Object(b.a)(e=>{var r=(e=>{var{replaceEls:[r],flipType:n}=e;return Object(m.c)(r,t,h).pipe(Object(l.a)({main:r,flipType:n}))})(e).toPromise();return e.transitionUntil(r),r}),Object(u.a)()),T=q(S,C,Object(a.a)(k,x),{animationMain:F,settings:h}).pipe(Object(u.a)());S.pipe(Object(b.a)(e=>{var t=Object(i.a)(Object(o.a)(j),L,T).toPromise();return e.transitionUntil(t),t})).subscribe(),L.subscribe(),T.subscribe();var N=document.querySelector(".sidebar-bg");if(N){var A=new P(2e3);B.pipe(Object(b.a)(e=>{var{document:t}=e;return Object(i.a)(A.fetchImage(t),k).pipe(Object(c.a)(e=>{var[t]=e;return t}),Object(d.a)(S))}),Object(v.a)([N]),Object(y.a)(),Object(f.a)(e=>{var[t,r]=e;return A.fade(t,r)})).subscribe()}x.pipe(Object(b.a)(e=>{var{url:r}=e;D&&(D.style.display="none");var n=document.getElementById("_main");return n&&(n.style.pointerEvents=""),m.d.call(null==F?void 0:F.querySelector(".page")),m.d.call(n),function(e,t){var{pathname:r}=t,n=Object(m.l)("_error-template"),a=null==n?void 0:n.querySelector(".this-link");a&&(a.href=r,a.textContent=r),null==e||e.appendChild(n),null==e||e.lastElementChild}(n,r),Object(m.c)(n,t,_(_({},h),{},{fill:"forwards"}))})).subscribe(),Promise.resolve().then(r.bind(null,209)),window._pushState=O}},function(){var e=this,t=arguments;return new Promise((function(r,n){var a=B.apply(e,t);function i(e){k(a,r,n,i,o,"next",e)}function o(e){k(a,r,n,i,o,"throw",e)}i(void 0)}))})()}}]);
+function isExternal(_ref) {
+  var {
+    protocol,
+    host
+  } = _ref;
+  var location = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window.location;
+  return protocol !== location.protocol || host !== location.host;
+}
+var objectURLs = new WeakMap();
+class CrossFader {
+  /** @param {number} fadeDuration */
+  constructor(fadeDuration) {
+    this.sidebar = document.getElementById('_sidebar');
+    this.fadeDuration = fadeDuration;
+    this.prevHash = calcHash(document);
+    this.themeColorEl = document.querySelector('meta[name="theme-color"]');
+  }
+
+  /** @param {Document} newDocument */
+  fetchImage2(newDocument) {
+    var _newDocument$querySel, _newDocument$querySel2;
+    var {
+      backgroundImage = ''
+    } = (_newDocument$querySel = (_newDocument$querySel2 = newDocument.querySelector('.sidebar-bg')) === null || _newDocument$querySel2 === void 0 ? void 0 : _newDocument$querySel2.style) !== null && _newDocument$querySel !== void 0 ? _newDocument$querySel : {};
+    var result = RE_CSS_URL.exec(backgroundImage);
+    if (!result) {
+      return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["of"])('');
+    }
+    var url = new URL(result[1], window.location.origin);
+    return Object(_common__WEBPACK_IMPORTED_MODULE_2__["fetchRx"])(url.href, _objectSpread({
+      method: 'GET',
+      headers: {
+        Accept: 'image/*'
+      }
+    }, isExternal(url) ? {
+      mode: 'cors'
+    } : {})).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(r => r.blob()), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(blob => URL.createObjectURL(blob)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["catchError"])(() => Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["of"])(url.href)));
+  }
+
+  /** @param {Document} newDocument */
+  fetchImage(newDocument) {
+    var hash = calcHash(newDocument);
+    if (hash === this.prevHash) return rxjs__WEBPACK_IMPORTED_MODULE_0__["EMPTY"];
+    return this.fetchImage2(newDocument).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(objectURL => {
+      var _newDocument$querySel3;
+      /** @type {HTMLDivElement} */
+      var div = (_newDocument$querySel3 = newDocument.querySelector('.sidebar-bg')) !== null && _newDocument$querySel3 !== void 0 ? _newDocument$querySel3 : document.createElement('div');
+      if (objectURL) {
+        div.style.backgroundImage = "url(".concat(objectURL, ")");
+        objectURLs.set(div, objectURL);
+      }
+      return [div, hash, newDocument];
+    }));
+  }
+
+  /** @param {Document} newDocument */
+  updateStyle(newDocument) {
+    var _newDocument$getEleme;
+    var classList = (_newDocument$getEleme = newDocument.getElementById('_sidebar')) === null || _newDocument$getEleme === void 0 ? void 0 : _newDocument$getEleme.classList;
+    if (classList) this.sidebar.setAttribute('class', classList);
+    if (this.themeColorEl) {
+      var _newDocument$head$que;
+      var themeColor = (_newDocument$head$que = newDocument.head.querySelector('meta[name="theme-color"]')) === null || _newDocument$head$que === void 0 ? void 0 : _newDocument$head$que.content;
+      if (themeColor) {
+        window.setTimeout(() => {
+          if (this.themeColorEl) {
+            this.themeColorEl.content = themeColor;
+          }
+        }, 250);
+      }
+    }
+    try {
+      var _pageStyle$parentNode;
+      var pageStyle = document.getElementById('_pageStyle');
+      var newPageStyle = newDocument.getElementById('_pageStyle');
+      if (!newPageStyle) return;
+      pageStyle === null || pageStyle === void 0 || (_pageStyle$parentNode = pageStyle.parentNode) === null || _pageStyle$parentNode === void 0 || _pageStyle$parentNode.replaceChild(newPageStyle, pageStyle);
+    } catch (e) {
+      if (true) console.error(e);
+    }
+  }
+
+  /**
+   * @param {[HTMLDivElement]} param0
+   * @param {[HTMLDListElement, string, Document]} param1
+   */
+  fade(_ref2, _ref3) {
+    var _prevDiv$parentNode;
+    var [prevDiv] = _ref2;
+    var [div, hash, newDocument] = _ref3;
+    prevDiv === null || prevDiv === void 0 || (_prevDiv$parentNode = prevDiv.parentNode) === null || _prevDiv$parentNode === void 0 || _prevDiv$parentNode.insertBefore(div, prevDiv.nextElementSibling);
+    this.updateStyle(newDocument);
+
+    // Only update the prev hash after we're actually in the fade stage
+    this.prevHash = hash;
+    return Object(_common__WEBPACK_IMPORTED_MODULE_2__["animate"])(div, [{
+      opacity: 0
+    }, {
+      opacity: 1
+    }], {
+      duration: this.fadeDuration,
+      easing: 'ease'
+    }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(() => {
+      var _prevDiv$parentNode2;
+      if (objectURLs.has(prevDiv)) URL.revokeObjectURL(objectURLs.get(prevDiv));
+      prevDiv === null || prevDiv === void 0 || (_prevDiv$parentNode2 = prevDiv.parentNode) === null || _prevDiv$parentNode2 === void 0 || _prevDiv$parentNode2.removeChild(prevDiv);
+    }));
+  }
+}
+
+/***/ }),
+
+/***/ "./_js/src/flip/index.js":
+/*!*******************************!*\
+  !*** ./_js/src/flip/index.js ***!
+  \*******************************/
+/*! exports provided: setupFLIP */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setupFLIP", function() { return setupFLIP; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _title__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./title */ "./_js/src/flip/title.js");
+// Copyright (c) 2019 Florian Klampfer <https://qwtel.com/>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+
+var FLIP_TYPES = ['title'];
+function setupFLIP(start$, ready$, fadeIn$, options) {
+  var other$ = start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(_ref => {
+    var {
+      flipType
+    } = _ref;
+    return !FLIP_TYPES.includes(flipType);
+  }));
+  return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["merge"])(Object(_title__WEBPACK_IMPORTED_MODULE_2__["setupFLIPTitle"])(start$, ready$, fadeIn$, options), other$);
+}
+
+/***/ }),
+
+/***/ "./_js/src/flip/title.js":
+/*!*******************************!*\
+  !*** ./_js/src/flip/title.js ***!
+  \*******************************/
+/*! exports provided: setupFLIPTitle */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setupFLIPTitle", function() { return setupFLIPTitle; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common */ "./_js/src/common.js");
+// Copyright (c) 2019 Florian Klampfer <https://qwtel.com/>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+
+var TITLE_SELECTOR = '.page-title, .post-title';
+
+/**
+ * @param {Observable<any>} start$
+ * @param {Observable<any>} ready$
+ * @param {Observable<any>} fadeIn$
+ * @param {any} opts
+ */
+function setupFLIPTitle(start$, ready$, fadeIn$, _ref) {
+  var {
+    animationMain,
+    settings
+  } = _ref;
+  if (!animationMain) return start$;
+  var flip$ = start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(_ref2 => {
+    var {
+      flipType
+    } = _ref2;
+    return flipType === 'title';
+  }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref3 => {
+    var {
+      anchor
+    } = _ref3;
+    if (!anchor) return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["of"])({});
+    var title = document.createElement('h1');
+    title.classList.add('page-title');
+    title.textContent = anchor.textContent;
+    title.style.transformOrigin = 'left top';
+    var page = animationMain.querySelector('.page');
+    if (!page) return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["of"])({});
+    _common__WEBPACK_IMPORTED_MODULE_2__["empty"].call(page);
+    page.appendChild(title);
+    animationMain.style.position = 'fixed';
+    animationMain.style.opacity = 1;
+    var first = anchor.getBoundingClientRect();
+    var last = title.getBoundingClientRect();
+    var firstFontSize = parseInt(getComputedStyle(anchor).fontSize, 10);
+    var lastFontSize = parseInt(getComputedStyle(title).fontSize, 10);
+    var invertX = first.left - last.left;
+    var invertY = first.top - last.top;
+    var invertScale = firstFontSize / lastFontSize;
+    anchor.style.opacity = 0;
+    var transform = [{
+      transform: "translate3d(".concat(invertX, "px, ").concat(invertY, "px, 0) scale(").concat(invertScale, ")")
+    }, {
+      transform: 'translate3d(0, 0, 0) scale(1)'
+    }];
+    return Object(_common__WEBPACK_IMPORTED_MODULE_2__["animate"])(title, transform, settings).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])({
+      complete() {
+        animationMain.style.position = 'absolute';
+      }
+    }));
+  }));
+  start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref4 => {
+    var {
+      flipType
+    } = _ref4;
+    return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["zip"])(ready$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["filter"])(() => flipType === 'title'), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref5 => {
+      var {
+        replaceEls: [main]
+      } = _ref5;
+      var title = main.querySelector(TITLE_SELECTOR);
+      if (title) title.style.opacity = 0;
+      return title;
+    })), fadeIn$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref6 => {
+      var [x] = _ref6;
+      return x;
+    }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(title => {
+      if (title) title.style.opacity = 1;
+      animationMain.style.opacity = 0;
+    }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["finalize"])(() => {
+      animationMain.style.opacity = 0;
+      var page = animationMain.querySelector('.page');
+      _common__WEBPACK_IMPORTED_MODULE_2__["empty"].call(page);
+    }));
+  })).subscribe();
+  return flip$;
+}
+
+/***/ }),
+
+/***/ "./_js/src/push-state.js":
+/*!*******************************!*\
+  !*** ./_js/src/push-state.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/dist/esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/dist/esm5/operators/index.js");
+/* harmony import */ var _common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common */ "./_js/src/common.js");
+/* harmony import */ var _cross_fader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./cross-fader */ "./_js/src/cross-fader.js");
+/* harmony import */ var _flip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./flip */ "./_js/src/flip/index.js");
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+// Copyright (c) 2019 Florian Klampfer <https://qwtel.com/>
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+
+
+
+_asyncToGenerator(function* () {
+  yield Promise.all([...('fetch' in window ? [] : [Promise.all(/*! import() | fetch */[__webpack_require__.e("vendors~fetch"), __webpack_require__.e("fetch")]).then(__webpack_require__.bind(null, /*! ./polyfills/fetch */ "./_js/src/polyfills/fetch.js"))]), ...('customElements' in window ? [] : [Promise.all(/*! import() | webcomponents */[__webpack_require__.e("vendors~webcomponents"), __webpack_require__.e("webcomponents")]).then(__webpack_require__.bind(null, /*! ./polyfills/webcomponents */ "./_js/src/polyfills/webcomponents.js"))]), ...('animate' in Element.prototype ? [] : [__webpack_require__.e(/*! import() | webanimations */ "vendors~webanimations").then(__webpack_require__.t.bind(null, /*! web-animations-js */ "./node_modules/web-animations-js/web-animations.min.js", 7))]), ...('IntersectionObserver' in window ? [] : [__webpack_require__.e(/*! import() | intersection-observer */ "vendors~intersection-observer").then(__webpack_require__.t.bind(null, /*! intersection-observer */ "./node_modules/intersection-observer/intersection-observer.js", 7))])]);
+  yield _common__WEBPACK_IMPORTED_MODULE_2__["webComponentsReady"];
+  var NAVBAR_SEL = '#_navbar > .content > .nav-btn-bar';
+  var CROSS_FADE_DURATION = 2000;
+  var FADE_OUT = [{
+    opacity: 1
+  }, {
+    opacity: 0
+  }];
+  var FADE_IN = [{
+    opacity: 0,
+    transform: 'translateY(-3rem)'
+  }, {
+    opacity: 1,
+    transform: 'translateY(0)'
+  }];
+  function setupAnimationMain(pushStateEl) {
+    var _pushStateEl$parentNo;
+    pushStateEl === null || pushStateEl === void 0 || (_pushStateEl$parentNo = pushStateEl.parentNode) === null || _pushStateEl$parentNo === void 0 || _pushStateEl$parentNo.insertBefore(Object(_common__WEBPACK_IMPORTED_MODULE_2__["importTemplate"])('_animation-template'), pushStateEl);
+    return pushStateEl === null || pushStateEl === void 0 ? void 0 : pushStateEl.previousElementSibling;
+  }
+  function setupLoading(navbarEl) {
+    navbarEl === null || navbarEl === void 0 || navbarEl.appendChild(Object(_common__WEBPACK_IMPORTED_MODULE_2__["importTemplate"])('_loading-template'));
+    return navbarEl === null || navbarEl === void 0 ? void 0 : navbarEl.lastElementChild;
+  }
+  function setupErrorPage(main, url) {
+    var {
+      pathname
+    } = url;
+    var error = Object(_common__WEBPACK_IMPORTED_MODULE_2__["importTemplate"])('_error-template');
+    var anchor = error === null || error === void 0 ? void 0 : error.querySelector('.this-link');
+    if (anchor) {
+      anchor.href = pathname;
+      anchor.textContent = pathname;
+    }
+    main === null || main === void 0 || main.appendChild(error);
+    return main === null || main === void 0 ? void 0 : main.lastElementChild;
+  }
+  function getFlipType(el) {
+    var _el$getAttribute;
+    if (el !== null && el !== void 0 && el.classList.contains('flip-title')) return 'title';
+    if (el !== null && el !== void 0 && el.classList.contains('flip-project')) return 'project';
+    return el === null || el === void 0 || (_el$getAttribute = el.getAttribute) === null || _el$getAttribute === void 0 ? void 0 : _el$getAttribute.call(el, 'data-flip');
+  }
+  var pushStateEl = document.querySelector('hy-push-state');
+  if (!pushStateEl) return;
+  var duration = Number(pushStateEl.getAttribute('duration')) || 350;
+  var settings = {
+    duration: duration,
+    easing: 'ease'
+  };
+  var animateFadeOut = _ref2 => {
+    var {
+      main
+    } = _ref2;
+    return Object(_common__WEBPACK_IMPORTED_MODULE_2__["animate"])(main, FADE_OUT, _objectSpread(_objectSpread({}, settings), {}, {
+      fill: 'forwards'
+    })).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mapTo"])({
+      main
+    }));
+  };
+  var animateFadeIn = _ref3 => {
+    var {
+      replaceEls: [main],
+      flipType
+    } = _ref3;
+    return Object(_common__WEBPACK_IMPORTED_MODULE_2__["animate"])(main, FADE_IN, settings).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mapTo"])({
+      main,
+      flipType
+    }));
+  };
+  var drawerEl = document.querySelector('hy-drawer');
+  var navbarEl = document.querySelector(NAVBAR_SEL);
+  var animationMain = setupAnimationMain(pushStateEl);
+  var loadingEl = setupLoading(navbarEl);
+  var fromEventX = (eventName, mapFn) => Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["fromEvent"])(pushStateEl, eventName).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref4 => {
+    var {
+      detail
+    } = _ref4;
+    return detail;
+  }), mapFn ? Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(mapFn) : _ => _, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["share"])());
+  var start$ = fromEventX('hy-push-state-start', detail => Object.assign(detail, {
+    flipType: getFlipType(detail.anchor)
+  }));
+  var ready$ = fromEventX('hy-push-state-ready');
+  var after$ = fromEventX('hy-push-state-after');
+  var progress$ = fromEventX('hy-push-state-progress');
+  var error$ = fromEventX('hy-push-state-networkerror');
+  var fadeOut$ = start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(context => Object.assign(context, {
+    main: document.getElementById('_main')
+  })), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(_ref5 => {
+    var {
+      main
+    } = _ref5;
+    main.style.pointerEvents = 'none';
+  }), window._noDrawer && drawerEl !== null && drawerEl !== void 0 && drawerEl.classList.contains('cover') ? Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(() => {
+    var _drawerEl$parentNode;
+    drawerEl.classList.remove('cover');
+    (_drawerEl$parentNode = drawerEl.parentNode) === null || _drawerEl$parentNode === void 0 || _drawerEl$parentNode.appendChild(drawerEl);
+  }) : _ => _, Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["exhaustMap"])(animateFadeOut), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["tap"])(_ref6 => {
+    var {
+      main
+    } = _ref6;
+    return _common__WEBPACK_IMPORTED_MODULE_2__["empty"].call(main);
+  }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["share"])());
+  if (loadingEl) {
+    progress$.subscribe(() => {
+      loadingEl.style.display = 'flex';
+    });
+    ready$.subscribe(() => {
+      loadingEl.style.display = 'none';
+    });
+  }
+  var fadeIn$ = after$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(context => {
+    var p = animateFadeIn(context).toPromise();
+    context.transitionUntil(p);
+    return p;
+  }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["share"])());
+  var flip$ = Object(_flip__WEBPACK_IMPORTED_MODULE_4__["setupFLIP"])(start$, ready$, Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["merge"])(fadeIn$, error$), {
+    animationMain,
+    settings: settings
+  }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["share"])());
+  start$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(context => {
+    var promise = Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["zip"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["timer"])(duration), fadeOut$, flip$).toPromise();
+    context.transitionUntil(promise);
+    return promise;
+  })).subscribe();
+
+  // FIXME: Keeping permanent subscription? turn into hot observable?
+  fadeOut$.subscribe();
+  flip$.subscribe();
+  var sidebarBg = document.querySelector('.sidebar-bg');
+  if (sidebarBg) {
+    var crossFader = new _cross_fader__WEBPACK_IMPORTED_MODULE_3__["CrossFader"](CROSS_FADE_DURATION);
+    after$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref7 => {
+      var {
+        document
+      } = _ref7;
+      return Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["zip"])(crossFader.fetchImage(document), fadeIn$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(_ref8 => {
+        var [x] = _ref8;
+        return x;
+      }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["takeUntil"])(start$));
+    }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["startWith"])([sidebarBg]), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["pairwise"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["mergeMap"])(_ref9 => {
+      var [prev, curr] = _ref9;
+      return crossFader.fade(prev, curr);
+    })).subscribe();
+  }
+  error$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["switchMap"])(_ref10 => {
+    var {
+      url
+    } = _ref10;
+    if (loadingEl) loadingEl.style.display = 'none';
+    var main = document.getElementById('_main');
+    if (main) main.style.pointerEvents = '';
+    _common__WEBPACK_IMPORTED_MODULE_2__["empty"].call(animationMain === null || animationMain === void 0 ? void 0 : animationMain.querySelector('.page'));
+    _common__WEBPACK_IMPORTED_MODULE_2__["empty"].call(main);
+    setupErrorPage(main, url);
+    return Object(_common__WEBPACK_IMPORTED_MODULE_2__["animate"])(main, FADE_IN, _objectSpread(_objectSpread({}, settings), {}, {
+      fill: 'forwards'
+    }));
+  })).subscribe();
+  Promise.resolve(/*! import() eager */).then(__webpack_require__.bind(null, /*! @hydecorp/push-state */ "./node_modules/@hydecorp/push-state/lib/index.js"));
+  window._pushState = pushStateEl;
+})();
+
+/***/ })
+
+}]);
+//# sourceMappingURL=push-state-hydejack-9.2.1.js.map
