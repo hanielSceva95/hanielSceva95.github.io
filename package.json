@@ -1,5 +1,6 @@
 {
-  "name": "client",
+  "name": "haniel-portfolio",
+  "homepage": "https://HanielSceva95.github.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
