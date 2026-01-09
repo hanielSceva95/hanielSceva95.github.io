@@ -80,7 +80,7 @@ function App() {
       { id: 2, degree: 'Master of Science in Computer Science', school: 'Binghamton University, SUNY', period: 'December 2020' },
       { id: 3, degree: 'Bachelor of Engineering in Electrical and Electronics Engineering', school: 'Sathyabama University', period: 'April 2016' }
     ],
-    hobbies: ['Photography', 'Travel', 'Gaming', 'Coding']
+    hobbies: ['Biking', 'Travel', 'Gaming', 'Coding']
   };
 
   return (
