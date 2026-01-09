@@ -2,6 +2,9 @@ import React, { useRef } from 'react';
 // import axios from 'axios';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Phone, Mail, Linkedin, MapPin } from 'lucide-react';
+import bikeImg from './assets/bike5.JPG';
+import profileImg from './assets/haniel.jpg';
+import resumePdf from './assets/Sceva_resume.pdf';
 
 function App() {
   const targetRef = useRef(null);
@@ -95,7 +98,7 @@ function App() {
         >
           <div className="absolute inset-0 z-10" /> {/* Darker Overlay for better text contrast */}
           <img 
-            src="/bike5.JPG" 
+            src={bikeImg} 
             alt="Haniel Sceva" 
             className="w-full h-full object-cover"
           />
@@ -153,7 +156,7 @@ function App() {
                 <div className="space-y-6">
                   <div className="relative group w-[70%]">
                     <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
-                    <img src="/haniel.jpg" alt="Haniel Sceva" className="relative w-full object-cover rounded-2xl shadow-2xl" />
+                    <img src={profileImg} alt="Haniel Sceva" className="relative w-full object-cover rounded-2xl shadow-2xl" />
                   </div>
                 </div>
                 
@@ -252,7 +255,7 @@ function App() {
 
             {/* Resume Download */}
             <section className="pb-20">
-              <a href="/Sceva_resume.pdf" download="Sceva_resume.pdf" className="inline-block bg-[#d4af37] text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors cursor-pointer">
+              <a href={resumePdf} download="Sceva_resume.pdf" className="inline-block bg-[#d4af37] text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-white transition-colors cursor-pointer">
                 Download Resume
               </a>
             </section>
