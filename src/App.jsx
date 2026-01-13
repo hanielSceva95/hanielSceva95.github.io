@@ -110,9 +110,9 @@ function App() {
               x: useTransform(scrollYProgress, [0, 0.2], [0, -80]), // Slide left to fit in sidebar
               transformOrigin: "top left"
             }}
-            className="absolute top-40 left-10 md:top-28 md:left-40 z-20 whitespace-nowrap"
+            className="absolute top-32 left-6 sm:top-40 sm:left-10 md:top-28 md:left-40 z-20 whitespace-nowrap"
           >
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter text-zinc-950">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter text-zinc-950">
               Haniel Sceva
             </h1>
             <p className="font-semibold text-xl text-zinc-800 mt-2 mb-6">Full Stack Developer</p>
@@ -148,13 +148,14 @@ function App() {
              className="shrink-0 h-full hidden md:block"
           />
           
-          <div className="flex-1 p-8 md:p-20 space-y-32 min-h-screen z-0">
+          
+          <div className="flex-1 p-4 md:p-8 lg:p-20 space-y-20 md:space-y-32 min-h-screen z-0">
             {/* About Me Section */}
             <section id="about">
-              <h2 className="text-4xl font-bold mb-8 text-[#d4af37]">About Me</h2>
-              <div className="grid md:grid-cols-2 gap-12 items-start">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-[#d4af37]">About Me</h2>
+              <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
                 <div className="space-y-6">
-                  <div className="relative group w-[70%]">
+                  <div className="relative group w-full md:w-[70%]">
                     <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
                     <img src={profileImg} alt="Haniel Sceva" className="relative w-full object-cover rounded-2xl shadow-2xl" />
                   </div>
@@ -201,7 +202,7 @@ function App() {
             </section>
             {/* Experience Section */}
             <section id="experience">
-              <h2 className="text-4xl font-bold mb-8 text-[#d4af37]">Experience</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-[#d4af37]">Experience</h2>
               <div className="space-y-12">
                 {data.experience.map((item) => (
                   <div key={item.id || item._id} className="border-l-2 border-[#333] pl-6 py-2 relative">
@@ -234,7 +235,7 @@ function App() {
 
             {/* Education Section */}
             <section id="education">
-              <h2 className="text-4xl font-bold mb-8 text-[#d4af37]">Education</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-[#d4af37]">Education</h2>
               {data.education.map((item) => (
                 <div key={item.id || item._id} className="bg-[#111] p-8 rounded-lg mb-4">
                    <h3 className="text-2xl font-semibold">{item.degree}</h3>
@@ -245,7 +246,7 @@ function App() {
 
              {/* Hobbies Section */}
              <section id="hobbies">
-              <h2 className="text-4xl font-bold mb-8 text-[#d4af37]">Hobbies</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-[#d4af37]">Hobbies</h2>
               <div className="grid grid-cols-2 gap-4">
                  {data.hobbies.map((hobby, index) => (
                    <div key={index} className="bg-[#111] h-40 rounded flex items-center justify-center text-xl hover:bg-[#222] transition-colors">{hobby}</div>
