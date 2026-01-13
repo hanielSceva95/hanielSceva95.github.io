@@ -110,7 +110,7 @@ function App() {
               x: useTransform(scrollYProgress, [0, 0.2], [0, -80]), // Slide left to fit in sidebar
               transformOrigin: "top left"
             }}
-            className="absolute top-32 left-6 sm:top-40 sm:left-10 md:top-28 md:left-40 z-20 whitespace-nowrap"
+            className="title-wrapper"
           >
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold tracking-tighter text-zinc-950">
               Haniel Sceva
