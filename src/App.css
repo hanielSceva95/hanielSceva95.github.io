@@ -45,10 +45,10 @@
   white-space: nowrap;
   
   /* Default Mobile (iPhone) - Reduced by 40% */
-  top: 8rem; 
+  /* top: 8rem; 
   left: 1.5rem;
   transform: scale(0.6);
-  transform-origin: top left;
+  transform-origin: top left; */
 }
 
 @media (min-width: 640px) {
