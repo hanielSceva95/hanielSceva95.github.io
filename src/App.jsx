@@ -5,6 +5,7 @@ import { Phone, Mail, Linkedin, MapPin } from 'lucide-react';
 import bikeImg from './assets/bike5.JPG';
 import profileImg from './assets/haniel.jpg';
 import resumePdf from './assets/Sceva_resume.pdf';
+import './App.css';
 
 function App() {
   const targetRef = useRef(null);

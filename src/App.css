@@ -45,22 +45,23 @@
   white-space: nowrap;
   
   /* Default Mobile (iPhone) - Reduced by 40% */
-  top: 8rem; /* top-32 */
-  left: 1.5rem; /* left-6 */
-  zoom: 0.6; /* 60% size */
+  top: 8rem; 
+  left: 1.5rem;
+  transform: scale(0.6);
+  transform-origin: top left;
 }
 
 @media (min-width: 640px) {
   .title-wrapper {
-    top: 10rem; /* sm:top-40 */
-    left: 2.5rem; /* sm:left-10 */
-    zoom: 1; /* Reset zoom */
+    top: 10rem;
+    left: 2.5rem;
+    transform: scale(1);
   }
 }
 
 @media (min-width: 768px) {
   .title-wrapper {
-    top: 7rem; /* md:top-28 */
-    left: 10rem; /* md:left-40 */
+    top: 7rem;
+    left: 10rem;
   }
 }
